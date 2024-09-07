@@ -50,8 +50,10 @@ def users_menu():
     hello
     """)
 
+
 def asaas():
     pass
+
 
 if __name__ == '__main__':
     create_tables()
