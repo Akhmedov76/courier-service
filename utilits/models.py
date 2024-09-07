@@ -8,7 +8,7 @@ def create_tables():
         name VARCHAR(50) NOT NULL,
         email VARCHAR(50) UNIQUE NOT NULL,
         phone_number BIGINT UNIQUE NOT NULL,
-        password VARCHAR(50) NOT NULL,
+        password VARCHAR(256) NOT NULL,
         address VARCHAR(50) NOT NULL,
         status BOOLEAN DEFAULT FALSE,
         role VARCHAR(50) NOT NULL
