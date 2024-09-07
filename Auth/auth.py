@@ -18,13 +18,9 @@ class Auth:
     @log_decorator
     def register(self):
         """
-        Registers a new user by collecting their first name, last name,
-        generating a username and password, and storing these details in the database.
-
-        Returns:
-        - bool: True if the registration is successful.
+        Register a new user in the system.
+        Checks for existing users with the same phone number or email.
         """
-
         name = input("Enter name: ").capitalize().strip()
         email = input("Enter email: ").strip()
         phone_number = input("Enter phone number: ").strip()

@@ -26,7 +26,7 @@ def view_auth_menu():
             elif result_login['role'] == 'super_admin':
                 admin_menu()
             elif result_login['role'] == 'admin':
-                pass
+                admin_menu()
             elif result_login['role'] == 'manager':
                 pass
             elif result_login['role'] == 'user':
