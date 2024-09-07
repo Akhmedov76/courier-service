@@ -55,14 +55,26 @@ def create_tables():
 
     create_order_table = '''
     CREATE TABLE IF NOT EXISTS orders(
-    id SERIAL PRIMARY KEY,
-    order_date TIMESTAMP NOT NULL,
-    total_amount BIGINT NOT NULL,
-    status VARCHAR(50) DEFAULT FALSE,
-    user_id INTEGER REFERENCES users(id),
-    restaurant_id INTEGER REFERENCES restaurants(id),
-    branch_id INTEGER REFERENCES branches(id)
+        id SERIAL PRIMARY KEY,
+        order_date TIMESTAMP NOT NULL,
+        total_amount BIGINT NOT NULL,
+        status VARCHAR(50) DEFAULT FALSE,
+        user_id INTEGER REFERENCES users(id),
+        restaurant_id INTEGER REFERENCES restaurants(id),
+        branch_id INTEGER REFERENCES branches(id)
 
+    ); '''
+
+    create_branches_table = '''
+    CREATE TABLE branches (
+        id BIGINT PRIMARY KEY,
+        name VARCHAR(255) NOT NULL,
+        address VARCHAR(255),
+        phone_number VARCHAR(20),
+        restaurant_id BIGINT,
+        manager_id BIGINT,
+        FOREIGN KEY (restaurant_id) REFERENCES restaurants(id),
+        FOREIGN KEY (manager_id) REFERENCES managers(id)
     ); '''
 
     execute_query(create_users_table)
@@ -71,3 +83,4 @@ def create_tables():
     execute_query(create_delivery_table)
     execute_query(create_kitchen_menu_table)
     execute_query(create_order_table)
+    execute_query(create_branches_table)
