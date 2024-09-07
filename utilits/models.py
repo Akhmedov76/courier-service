@@ -87,8 +87,7 @@ def create_tables():
         delivery_date TIMESTAMP
     ); '''
 
-
-    create_payment_table ='''
+    create_payment_table = '''
     CREATE TABLE payments (
         id BIGINT PRIMARY KEY,
         order_id BIGINT NOT NULL,
@@ -97,7 +96,6 @@ def create_tables():
         payment_method BIGINT,
         FOREIGN KEY (order_id) REFERENCES orders(id)
     );'''
-
 
     execute_query(create_users_table)
     execute_query(create_couriers_table)
