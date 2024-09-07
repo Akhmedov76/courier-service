@@ -125,6 +125,58 @@ def view_restaurants_menu():
         print("Invalid choice!")
         view_restaurants_menu()
 
+def view_branches_menu():
+    print("\n--- Manage Branches ---")
+    print("""
+    1. Add Branch
+    2. View Branches
+    3. Update Branch
+    4. Delete Branch
+    5. Exit
+    """)
+    choice: int = int(input("Choose an action: "))
+    if choice == 1:
+        pass
+    elif choice == 2:
+        pass
+    elif choice == 3:
+        pass
+    elif choice == 4:
+        pass
+    elif choice == 5:
+        print("Exiting...")
+        view_auth_menu()
+    else:
+        print("Invalid choice!")
+        view_branches_menu()
+
+def view_kitchen_menu():
+    print("\n--- Manage Kitchen ---")
+    print("""
+    1. Add Kitchen
+    2. View Kitchens
+    3. Update Kitchen
+    4. Delete Kitchen
+    5. Exit
+    """)
+    choice: int = int(input("Choose an action: "))
+    if choice == 1:
+        pass
+    elif choice == 2:
+        pass
+    elif choice == 3:
+        pass
+    elif choice == 4:
+        pass
+    elif choice == 5:
+        print("Exiting...")
+        view_auth_menu()
+    else:
+        print("Invalid choice!")
+        view_kitchen_menu()
+
+
+
 
 
 if __name__ == '__main__':
