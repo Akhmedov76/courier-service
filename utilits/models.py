@@ -89,14 +89,15 @@ def create_tables():
     ); '''
 
     create_payment_table = '''
-    CREATE TABLE payments (
+    CREATE TABLE IF NOT EXISTS payments (
         id BIGINT PRIMARY KEY,
         order_id BIGINT NOT NULL,
-        payment_date BIGINT NOT NULL,
-        amount BIGINT NOT NULL,
+        payment_date TIMESTAMP NOT NULL,
+        amount DECIMAL(10, 2) NOT NULL,
         payment_method BIGINT,
         FOREIGN KEY (order_id) REFERENCES orders(id)
-    );'''
+    );"'''
+
 
     execute_query(create_users_table)
     execute_query(create_couriers_table)
