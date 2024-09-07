@@ -65,10 +65,42 @@ def create_tables():
 
     ); '''
 
+    create_order_item_table = ''' 
+    CREATE TABLE IF NOT EXISTS order_item(
+    order_id INTEGER REFERENCES orders(id),
+    id SERIAL PRIMARY KEY,
+    kitchen_menu_id INTEGER REFERENCES kitchen_menu(id)
+    quantity BIGINT NOT NULL,
+    PRICE DECIMAL NOT NULL
+    ); '''
+
+
+    create_branches_table = '''
+    CREATE TABLE IF NOT EXISTS branches (
+    id SERIAL PRIMARY KEY NOT NULL,
+    name VARCHAR(50) NOT NULL,
+    adress VARCHAR(50) NOT NULL,
+    phone_number BIGINT NOT NULL,
+    restaurant_id INTEGER REFERENCES restaurants(id),
+    manager_id INTEGER REFERENCES users(id)
+    ); '''
+
+    create_payments_table = '''
+    CREATE TABLE IF NOT EXISTS payment (
+        id SERIAL PRIMARY KEY NOT NULL,
+        order_id INTEGER REFERENCES orders(id),
+        payments_date TIMESTAMP NOT NULL,
+        amount BIGINT NOT NULL,
+        payment_method BIGINT NOT NULL
+    ); '''
+
+
     execute_query(create_users_table)
-    # execute_query(superadmin_login_parol)
     execute_query(create_couriers_table)
     execute_query(create_restaurants_table)
     execute_query(create_delivery_table)
     execute_query(create_kitchen_menu_table)
     execute_query(create_order_table)
+    execute_query(create_order_item_table)
+    execute_query(create_branches_table)
+    execute_query(create_payments_table)
