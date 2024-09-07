@@ -66,7 +66,6 @@ def create_tables():
     ); '''
 
     execute_query(create_users_table)
-    # execute_query(superadmin_login_parol)
     execute_query(create_couriers_table)
     execute_query(create_restaurants_table)
     execute_query(create_delivery_table)
