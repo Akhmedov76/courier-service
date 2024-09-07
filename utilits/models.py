@@ -43,16 +43,6 @@ def create_tables():
         restaurant_id INTEGER REFERENCES restaurants(id));
          '''
 
-    create_delivery_table = ''' 
-        CREATE TABLE IF NOT EXISTS delivery (
-            id SERIAL PRIMARY KEY,
-            order_id INTEGER REFERENCES orders(id),
-            courier_id INTEGER REFERENCES couriers(id),
-            assigned_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            delivery_date TIMESTAMP
-        ); 
-    '''
-
     create_order_table = '''
     CREATE TABLE IF NOT EXISTS orders(
         id SERIAL PRIMARY KEY,
