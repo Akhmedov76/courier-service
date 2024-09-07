@@ -1,16 +1,17 @@
+import threading
+
 from utilits.models import create_tables
 from Auth.auth import Auth
 
 auth = Auth()
 
 
-def auth_menu():
-    text = '''
+def view_auth_menu():
+    print('''
 1. Register
 2. Login
 3. Logout
-    '''
-    print(text)
+    ''')
     try:
         user_input: int = int(input("Choose menu: "))
         if user_input == 1:
@@ -18,7 +19,7 @@ def auth_menu():
         elif user_input == 2:
             result_login = auth.login()
             if not result_login['is_login']:
-                auth_menu()
+                view_auth_menu()
             elif result_login['role'] == 'super_admin':
                 admin_menu()
             elif result_login['role'] == 'admin':
@@ -26,17 +27,18 @@ def auth_menu():
             elif result_login['role'] == 'manager':
                 pass
             elif result_login['role'] == 'user':
-                users_menu()
-                auth_menu()
+                pass
         elif user_input == 3:
             print("Good bye!")
-            Auth.logout()
+            if Auth.logout:
+                exit()
+            view_auth_menu()
         else:
             print("Invalid input")
-            auth_menu()
+            view_auth_menu()
     except Exception as e:
         print(f'Error: {e}')
-        auth_menu()
+        view_auth_menu()
 
 
 def admin_menu():
@@ -45,16 +47,7 @@ def admin_menu():
     """)
 
 
-def users_menu():
-    print("""
-    hello
-    """)
-
-
-def asaas():
-    pass
-
-
 if __name__ == '__main__':
-    create_tables()
-    auth_menu()
+    threading.Thread(target=create_tables).start()
+    threading.Thread(target=auth.logout).start()
+    view_auth_menu()
