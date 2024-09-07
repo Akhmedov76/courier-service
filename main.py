@@ -226,7 +226,30 @@ def view_delivery_menu():
         print("Invalid choice!")
         view_delivery_menu()
 
-
+def view_payment_menu():
+    print("\n--- Manage Payments ---")
+    print("""
+    1. Add Payment
+    2. View Payments
+    3. Update Payment
+    4. Delete Payment
+    5. Exit
+    """)
+    choice: int = int(input("Choose an action: "))
+    if choice == 1:
+        pass
+    elif choice == 2:
+        pass
+    elif choice == 3:
+        pass
+    elif choice == 4:
+        pass
+    elif choice == 5:
+        print("Exiting...")
+        view_auth_menu()
+    else:
+        print("Invalid choice!")
+        view_payment_menu()
 
 
 
