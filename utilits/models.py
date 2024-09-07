@@ -50,8 +50,7 @@ def create_tables():
         phone_number VARCHAR(20),
         restaurant_id BIGINT,
         user_id BIGINT,
-        FOREIGN KEY (restaurant_id) REFERENCES restaurants(id),
-        FOREIGN KEY (manager_id) REFERENCES managers(id)
+        FOREIGN KEY (restaurant_id) REFERENCES restaurants(id)
     ); '''
 
     create_order_table = '''
@@ -66,7 +65,6 @@ def create_tables():
 
     ); '''
 
-
     create_order_item_table = '''
     CREATE TABLE IF NOT EXISTS order_item (
         id BIGINT PRIMARY KEY,
@@ -75,7 +73,7 @@ def create_tables():
         quantity BIGINT NOT NULL,
         price DECIMAL(10, 2) NOT NULL,
         FOREIGN KEY (order_id) REFERENCES orders(id),
-        FOREIGN KEY (kitchen_id) REFERENCES kitchen(id)
+        FOREIGN KEY (kitchen_id) REFERENCES kitchen_menu(id)
     ); '''
 
     create_delivery_table = ''' 
