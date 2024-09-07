@@ -48,6 +48,32 @@ def admin_menu():
     """)
 
 
+def view_order_menu():
+    print("\n--- Manage Orders ---")
+    print("""
+1. Add Order
+2. View Orders
+3. Update Order
+4. Delete Order
+5. Exit
+""")
+    choice: int = int(input("Choose an action: "))
+    if choice == 1:
+        pass
+    elif choice == 2:
+        pass
+    elif choice == 3:
+        pass
+    elif choice == 4:
+        pass
+    elif choice == 5:
+        print("Exiting...")
+        view_auth_menu()
+    else:
+        print("Invalid choice!")
+        view_order_menu()
+
+
 if __name__ == '__main__':
     threading.Thread(target=tables.create_all_table).start()
     threading.Thread(target=auth.logout).start()
