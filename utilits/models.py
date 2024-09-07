@@ -1,5 +1,6 @@
 from database_config.db_settings import execute_query
 
+
 def create_tables():
     create_users_table = '''
     CREATE TABLE IF NOT EXISTS users (
@@ -51,6 +52,8 @@ def create_tables():
             delivery_date TIMESTAMP
         ); 
     '''
+
+    create_order_table =
 
     execute_query(create_users_table)
     # execute_query(superadmin_login_parol)

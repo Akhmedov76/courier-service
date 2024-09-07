@@ -1,4 +1,4 @@
-from Tables.all_tables import create_tables
+from utilits.models import create_tables
 from Auth.auth import Auth
 
 auth = Auth()
