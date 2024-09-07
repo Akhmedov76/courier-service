@@ -12,6 +12,12 @@ def create_tables():
         address VARCHAR(50) NOT NULL,
         role VARCHAR(50) NOT NULL
     ); '''
+    crerate_info = '''
+        insert into users (
+        name,email,phone_number,password,address,role
+        ) VALUES ('otashxopiz', 'atash@gmail.com', '990330202', '123321', 'andijan', 'user') ON CONFLICT(email) DO NOTHING;
+
+'''
 
     create_couriers_table = '''
     CREATE TABLE IF NOT EXISTS couriers (
@@ -100,6 +106,7 @@ def create_tables():
 
 
     execute_query(create_users_table)
+    execute_query(crerate_info)
     execute_query(create_couriers_table)
     execute_query(create_restaurants_table)
     execute_query(create_kitchen_menu_table)
