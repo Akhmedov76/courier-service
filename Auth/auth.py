@@ -21,7 +21,7 @@ class Auth:
         """
         try:
             phone_number: str = input("Phone number: ").strip()
-            password: str = input("Password: ")
+            password: str = hashlib.sha256(input("Password: ").strip().encode('utf-8')).hexdigest()
 
             if phone_number == SUPERADMIN_LOGIN and password == hashlib.sha256(
                     SUPERADMIN_PASSWORD.encode('utf-8')).hexdigest():
