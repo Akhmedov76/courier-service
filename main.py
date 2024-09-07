@@ -1,9 +1,10 @@
 import threading
 
-from utilits.models import create_tables
+from utilits.models import CreateTable
 from Auth.auth import Auth
 
 auth = Auth()
+tables = CreateTable()
 
 
 def view_auth_menu():
@@ -48,6 +49,6 @@ def admin_menu():
 
 
 if __name__ == '__main__':
-    threading.Thread(target=create_tables).start()
+    threading.Thread(target=tables.create_all_table).start()
     threading.Thread(target=auth.logout).start()
     view_auth_menu()

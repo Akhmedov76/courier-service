@@ -157,12 +157,13 @@ class CreateTable:
         """
         Create all tables.
         """
-        threading.Thread(target=self.create_users_table).start()
-        threading.Thread(target=self.create_couriers_table).start()
-        threading.Thread(target=self.create_restaurants_table).start()
-        threading.Thread(target=self.create_kitchen_menu_table).start()
-        threading.Thread(target=self.create_branches_table).start()
-        threading.Thread(target=self.create_order_table).start()
-        threading.Thread(target=self.create_order_item_table).start()
-        threading.Thread(target=self.create_delivery_table).start()
-        threading.Thread(target=self.create_payment_table).start()
+        self.create_users_table()
+        self.create_couriers_table()
+        self.create_restaurants_table()
+        self.create_kitchen_menu_table()
+        self.create_branches_table()
+        self.create_order_table()
+        self.create_order_item_table()
+        self.create_delivery_table()
+        self.create_payment_table()
+        return True
