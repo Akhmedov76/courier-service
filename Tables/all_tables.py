@@ -46,6 +46,17 @@ def create_tables():
     ); '''
 
 
+    create_menu_table = ''' 
+    CREATE TABLE IF NOT EXIST menu (
+        name VARCHAR(50) NOT NULL,
+        description VARCHAR(200) NOT NULL,
+        price DECIMAL NOT NULL,
+        image 
+        restaurant_id INTEGER REFERENCES reataurants(id)
+
+    ); '''
+
+
     create_delivery_table = ''' 
     CREATE TABLE IF NOT EXIST delivery (
         id SERIAL PRIMARY KEY,
@@ -61,3 +72,4 @@ def create_tables():
     execute_query(create_couriers_table)
     execute_query(create_restaurants_table)
     execute_query(create_delivery_table)
+    execute_query(create_menu_table)
