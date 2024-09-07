@@ -201,6 +201,32 @@ def view_order_items_menu():
         print("Invalid choice!")
         view_order_items_menu()
 
+def view_delivery_menu():
+    print("\n--- Manage Deliveries ---")
+    print("""
+    1. Add Delivery
+    2. View Deliveries
+    3. Update Delivery
+    4. Delete Delivery
+    5. Exit
+    """)
+    choice: int = int(input("Choose an action: "))
+    if choice == 1:
+        pass
+    elif choice == 2:
+        pass
+    elif choice == 3:
+        pass
+    elif choice == 4:
+        pass
+    elif choice == 5:
+        print("Exiting...")
+        view_auth_menu()
+    else:
+        print("Invalid choice!")
+        view_delivery_menu()
+
+
 
 
 
