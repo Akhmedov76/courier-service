@@ -34,7 +34,7 @@ def create_tables():
         user_id BIGINT UNIQUE NOT NULL
     ); '''
 
-    create_menu_table = ''' 
+    create_kitchen_menu_table = ''' 
     CREATE TABLE IF NOT EXISTS kitchen_menu (
         id SERIAL PRIMARY KEY,
         name VARCHAR(50) NOT NULL,
@@ -53,11 +53,22 @@ def create_tables():
         ); 
     '''
 
-    create_order_table =
+    create_order_table = '''
+    CREATE TABLE IF NOT EXISTS orders(
+    id SERIAL PRIMARY KEY<
+    order_date TIMESTAMP NOT NULL,
+    total_amount BIGINT NOT NULL,
+    status VARCHAR(50) DEFAULT FALSE,
+    user_id INTEGER REFERENCES users(id),
+    restaurant_id INTEGER REFERENCES restaurants(id),
+    branch_id INTEGER REFERENCES branches(id),
+
+    ); '''
 
     execute_query(create_users_table)
     # execute_query(superadmin_login_parol)
     execute_query(create_couriers_table)
     execute_query(create_restaurants_table)
     execute_query(create_delivery_table)
-    execute_query(create_menu_table)
+    execute_query(create_kitchen_menu_table)
+    execute_query(create_order_table)
