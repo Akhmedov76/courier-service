@@ -10,7 +10,7 @@ def create_tables():
         phone_number BIGINT UNIQUE NOT NULL,
         password VARCHAR(50) NOT NULL,
         address VARCHAR(50) NOT NULL,
-        role VARCHAR(50) DEFAULT 'USER'
+        role VARCHAR(50) NOT NULL
     ); '''
 
     create_couriers_table = '''
@@ -61,7 +61,7 @@ def create_tables():
     status VARCHAR(50) DEFAULT FALSE,
     user_id INTEGER REFERENCES users(id),
     restaurant_id INTEGER REFERENCES restaurants(id),
-    branch_id INTEGER REFERENCES branches(id),
+    branch_id INTEGER REFERENCES branches(id)
 
     ); '''
 
