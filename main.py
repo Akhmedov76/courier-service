@@ -16,7 +16,9 @@ def view_auth_menu():
     try:
         user_input: int = int(input("Choose menu: "))
         if user_input == 1:
-            pass
+            if auth.register():
+                view_auth_menu()
+            view_auth_menu()
         elif user_input == 2:
             result_login = auth.login()
             if not result_login['is_login']:
@@ -28,7 +30,7 @@ def view_auth_menu():
             elif result_login['role'] == 'manager':
                 pass
             elif result_login['role'] == 'user':
-                pass
+                user_menu()
         elif user_input == 3:
             print("Good bye!")
             if Auth.logout:
@@ -46,6 +48,10 @@ def admin_menu():
     print("""
     salom
     """)
+
+
+def user_menu():
+    print("\n--- User Menu ---")
 
 
 def view_order_menu():
@@ -125,6 +131,7 @@ def view_restaurants_menu():
         print("Invalid choice!")
         view_restaurants_menu()
 
+
 def view_branches_menu():
     print("\n--- Manage Branches ---")
     print("""
@@ -149,6 +156,7 @@ def view_branches_menu():
     else:
         print("Invalid choice!")
         view_branches_menu()
+
 
 def view_kitchen_menu():
     print("\n--- Manage Kitchen ---")
@@ -201,6 +209,7 @@ def view_order_items_menu():
         print("Invalid choice!")
         view_order_items_menu()
 
+
 def view_delivery_menu():
     print("\n--- Manage Deliveries ---")
     print("""
@@ -226,6 +235,7 @@ def view_delivery_menu():
         print("Invalid choice!")
         view_delivery_menu()
 
+
 def view_payment_menu():
     print("\n--- Manage Payments ---")
     print("""
@@ -250,8 +260,6 @@ def view_payment_menu():
     else:
         print("Invalid choice!")
         view_payment_menu()
-
-
 
 
 if __name__ == '__main__':
