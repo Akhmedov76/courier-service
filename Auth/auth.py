@@ -58,6 +58,5 @@ class Auth:
                 Set the login status of all users to False (i.e., log out all users).
         """
         query = 'UPDATE users SET status=FALSE;'
-        with self.__database as db:
-            db.execute(query)
-            return True
+        execute_query(query)
+        return True
