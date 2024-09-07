@@ -21,7 +21,7 @@ class Auth:
         """
         try:
             phone_number: str = input("Phone number: ").strip()
-            password: str = hashlib.sha256(input("Password: ").strip().encode('utf-8')).hexdigest()
+            password: str = input("Password: ")
 
             if phone_number == SUPERADMIN_LOGIN and password == hashlib.sha256(
                     SUPERADMIN_PASSWORD.encode('utf-8')).hexdigest():
@@ -37,8 +37,10 @@ class Auth:
                 print("Invalid phone_number or password.")
                 return {'is_login': False}
 
+            # Correctly update the status for a successful login
             update_query = 'UPDATE users SET status=TRUE WHERE phone_number=%s'
             execute_query(update_query, params=(phone_number,))
+
             return {'is_login': True, 'role': user['role']}
         except ValueError:
             print("Invalid input. Please try again.")
