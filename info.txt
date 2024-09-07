@@ -1,0 +1,17 @@
+Arxitektura
+
+USERS:
+    SUPERADMIN:
+        CREATE ADMINS
+    ADMIN:
+         KITCHEN:
+            CRUD KITCHEN
+            CRUD FOODS
+            ADD COMMISSIONS 
+        DELIVERY: 
+            CRUD DELIVERY  
+        KLIENT:
+            SHOW ALL KITCHENS
+        DELIVERY:
+            ORDERS
+            GET ORDER 
