@@ -176,6 +176,32 @@ def view_kitchen_menu():
         view_kitchen_menu()
 
 
+def view_order_items_menu():
+    print("\n--- Manage Order Items ---")
+    print("""
+    1. Add Order Item
+    2. View Order Items
+    3. Update Order Item
+    4. Delete Order Item
+    5. Exit
+    """)
+    choice: int = int(input("Choose an action: "))
+    if choice == 1:
+        pass
+    elif choice == 2:
+        pass
+    elif choice == 3:
+        pass
+    elif choice == 4:
+        pass
+    elif choice == 5:
+        print("Exiting...")
+        view_auth_menu()
+    else:
+        print("Invalid choice!")
+        view_order_items_menu()
+
+
 
 
 
