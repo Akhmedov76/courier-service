@@ -42,6 +42,17 @@ def create_tables():
         price DECIMAL NOT NULL,
         restaurant_id INTEGER REFERENCES restaurants(id));
          '''
+    create_branches_table = '''
+    CREATE TABLE IF NOT EXISTS branches (
+        id BIGINT PRIMARY KEY,
+        name VARCHAR(255) NOT NULL,
+        address VARCHAR(255),
+        phone_number VARCHAR(20),
+        restaurant_id BIGINT,
+        user_id BIGINT,
+        FOREIGN KEY (restaurant_id) REFERENCES restaurants(id),
+        FOREIGN KEY (manager_id) REFERENCES managers(id)
+    ); '''
 
     create_order_table = '''
     CREATE TABLE IF NOT EXISTS orders(
@@ -55,17 +66,6 @@ def create_tables():
 
     ); '''
 
-    create_branches_table = '''
-    CREATE TABLE IF NOT EXISTS branches (
-        id BIGINT PRIMARY KEY,
-        name VARCHAR(255) NOT NULL,
-        address VARCHAR(255),
-        phone_number VARCHAR(20),
-        restaurant_id BIGINT,
-        manager_id BIGINT,
-        FOREIGN KEY (restaurant_id) REFERENCES restaurants(id),
-        FOREIGN KEY (manager_id) REFERENCES managers(id)
-    ); '''
 
     create_order_item_table = '''
     CREATE TABLE IF NOT EXISTS order_item (
@@ -101,8 +101,8 @@ def create_tables():
     execute_query(create_couriers_table)
     execute_query(create_restaurants_table)
     execute_query(create_kitchen_menu_table)
-    execute_query(create_order_table)
     execute_query(create_branches_table)
+    execute_query(create_order_table)
     execute_query(create_order_item_table)
     execute_query(create_delivery_table)
     execute_query(create_payment_table)
