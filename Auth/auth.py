@@ -4,8 +4,8 @@ import hashlib
 from database_config.db_settings import Database, execute_query
 from decorator.decorator import log_decorator
 
-SUPERADMIN_LOGIN = "admin"
-SUPERADMIN_PASSWORD = "admin"
+SUPERADMIN_LOGIN = "super"
+SUPERADMIN_PASSWORD = "super"
 
 
 class Auth:
@@ -28,11 +28,11 @@ class Auth:
                 return {'is_login': True, 'role': 'super_admin'}
 
             query = '''
-            SELECT * FROM employee WHERE email=%s AND password=%s
+            SELECT * FROM users WHERE email=%s AND password=%s
             '''
             params = (email, password)
-            employee = execute_query(query, params, fetch='one')
-            if employee is None:
+            users = execute_query(query, params, fetch='one')
+            if users is None:
                 query = '''
                 SELECT * FROM company WHERE email=%s AND password=%s
                 '''
@@ -42,11 +42,11 @@ class Auth:
                     print("Login failed")
                     return None
                 else:
-                    update_query = 'UPDATE company SET status=TRUE WHERE email=%s'
+                    update_query = 'UPDATE manager SET status=TRUE WHERE email=%s'
                     execute_query(update_query, params=(email,))
                     return {'is_login': True, 'role': 'manager'}
             else:
-                update_query = 'UPDATE employee SET status=TRUE WHERE email=%s'
+                update_query = 'UPDATE users SET status=TRUE WHERE email=%s'
                 execute_query(update_query, params=(email,))
                 return {'is_login': True, 'role': 'employee'}
         except ValueError:
@@ -64,7 +64,7 @@ class Auth:
         Create an employee table.
         """
         query = """
-                    CREATE TABLE IF NOT EXISTS employee (
+                    CREATE TABLE IF NOT EXISTS users (
                     id SERIAL PRIMARY KEY,
                     first_name VARCHAR(255) NOT NULL,
                     last_name VARCHAR(255) NOT NULL,
@@ -75,7 +75,6 @@ class Auth:
                     start_time TIMESTAMP NOT NULL,
                     end_time TIMESTAMP,
                     status BOOLEAN DEFAULT FALSE NOT NULL,
-                    company BIGINT NOT NULL REFERENCES company(id),
                     hire_date TIMESTAMP DEFAULT DATE_TRUNC('minute', NOW())
                     );
                 """
@@ -89,7 +88,7 @@ class Auth:
                 Set the login status of all users to False (i.e., log out all users).
         """
         self.create_employee_table()
-        query = 'UPDATE employee SET status=FALSE;'
+        query = 'UPDATE users SET status=FALSE;'
         with self.__database as db:
             db.execute(query)
             return True

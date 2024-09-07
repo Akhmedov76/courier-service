@@ -1,4 +1,7 @@
 from Tables.all_tables import create_tables
+from Auth.auth import Auth
+
+auth = Auth()
 
 
 def auth_menu():
@@ -14,6 +17,10 @@ def auth_menu():
             if not result_login['is_login']:
                 auth_menu()
             elif result_login['role'] == 'super_admin':
+                pass
+            elif result_login['role'] == 'admin':
+                pass
+            elif result_login['role'] == 'manager':
                 pass
             elif result_login['role'] == 'user':
                 pass
