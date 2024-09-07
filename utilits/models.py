@@ -67,8 +67,7 @@ def create_tables():
         FOREIGN KEY (manager_id) REFERENCES managers(id)
     ); '''
 
-
-    create_order_item_table ='''
+    create_order_item_table = '''
     CREATE TABLE IF NOT EXISTS order_item (
         id BIGINT PRIMARY KEY,
         order_id BIGINT NOT NULL,
@@ -79,8 +78,15 @@ def create_tables():
         FOREIGN KEY (kitchen_id) REFERENCES kitchen(id)
 ); '''
 
-    
-
+    create_delivery_table = ''' 
+            CREATE TABLE IF NOT EXISTS delivery (
+                id SERIAL PRIMARY KEY,
+                order_id INTEGER REFERENCES orders(id),
+                courier_id INTEGER REFERENCES couriers(id),
+                assigned_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                delivery_date TIMESTAMP
+            ); 
+        '''
 
     execute_query(create_users_table)
     execute_query(create_couriers_table)
