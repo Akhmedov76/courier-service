@@ -100,6 +100,32 @@ def view_couriers_menu():
         view_couriers_menu()
 
 
+def view_restaurants_menu():
+    print("\n--- Manage Restaurants ---")
+    print("""
+    1. Add Restaurant
+    2. View Restaurants
+    3. Update Restaurant
+    4. Delete Restaurant
+    5. Exit
+    """)
+    choice: int = int(input("Choose an action: "))
+    if choice == 1:
+        pass
+    elif choice == 2:
+        pass
+    elif choice == 3:
+        pass
+    elif choice == 4:
+        pass
+    elif choice == 5:
+        print("Exiting...")
+        view_auth_menu()
+    else:
+        print("Invalid choice!")
+        view_restaurants_menu()
+
+
 
 if __name__ == '__main__':
     threading.Thread(target=tables.create_all_table).start()
