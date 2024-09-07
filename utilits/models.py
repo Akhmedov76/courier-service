@@ -53,19 +53,19 @@ def create_tables():
         restaurant_id BIGINT,
         user_id BIGINT,
         FOREIGN KEY (restaurant_id) REFERENCES restaurants(id),
-        FOREIGN KEY (user_id) REFERENCES users(id)
-    );'''
+    ); '''
 
     create_order_table = '''
-    CREATE TABLE IF NOT EXISTS orders (
-    id SERIAL PRIMARY KEY,
-    order_date TIMESTAMP NOT NULL,
-    total_amount BIGINT NOT NULL,
-    status BOOLEAN DEFAULT FALSE,
-    user_id INTEGER REFERENCES users(id),
-    restaurant_id INTEGER REFERENCES restaurants(id),
-    branch_id INTEGER REFERENCES branches(id)
-    );'''
+    CREATE TABLE IF NOT EXISTS orders(
+        id SERIAL PRIMARY KEY,
+        order_date TIMESTAMP NOT NULL,
+        total_amount BIGINT NOT NULL,
+        status VARCHAR(50) DEFAULT FALSE,
+        user_id INTEGER REFERENCES users(id),
+        restaurant_id INTEGER REFERENCES restaurants(id),
+        branch_id INTEGER REFERENCES branches(id)
+
+    ); '''
 
 
     create_order_item_table = '''
@@ -76,7 +76,7 @@ def create_tables():
         quantity BIGINT NOT NULL,
         price DECIMAL(10, 2) NOT NULL,
         FOREIGN KEY (order_id) REFERENCES orders(id),
-        FOREIGN KEY (kitchen_id) REFERENCES kitchen(id)
+        FOREIGN KEY (kitchen_id) REFERENCES kitchen_menu(id)
     ); '''
 
     create_delivery_table = ''' 
