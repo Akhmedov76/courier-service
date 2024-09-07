@@ -96,7 +96,7 @@ def create_tables():
         amount DECIMAL(10, 2) NOT NULL,
         payment_method BIGINT,
         FOREIGN KEY (order_id) REFERENCES orders(id)
-    );"'''
+    );'''
 
 
     execute_query(create_users_table)
