@@ -14,7 +14,7 @@ def auth_menu():
                 pass
             elif result_login['role'] == 'user':
                 pass
-            auth_menu()
+                auth_menu()
         elif user_input == 2:
             print("Good bye!")
             Auth.logout()
