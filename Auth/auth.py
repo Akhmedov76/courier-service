@@ -39,7 +39,6 @@ class Auth:
 
             update_query = 'UPDATE users SET status=TRUE WHERE username=%s'
             execute_query(update_query, params=(username,))
-
             return {'is_login': True, 'role': user['role']}
         except ValueError:
             print("Invalid input. Please try again.")
