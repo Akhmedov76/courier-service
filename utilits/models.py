@@ -9,7 +9,7 @@ def create_tables():
         email VARCHAR(50) UNIQUE NOT NULL,
         phone_number BIGINT UNIQUE NOT NULL,
         password VARCHAR(50) NOT NULL,
-        adress VARCHAR(50) NOT NULL,
+        address VARCHAR(50) NOT NULL,
         role VARCHAR(50) DEFAULT 'USER'
     ); '''
 
@@ -53,11 +53,10 @@ def create_tables():
         ); 
     '''
 
-    create_order_table =
-
     execute_query(create_users_table)
     # execute_query(superadmin_login_parol)
     execute_query(create_couriers_table)
     execute_query(create_restaurants_table)
     execute_query(create_delivery_table)
     execute_query(create_menu_table)
+
