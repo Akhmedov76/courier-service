@@ -1,9 +1,9 @@
 import psycopg2
 from decorator.decorator import log_decorator
-from psycopg2 import sql
+
 from psycopg2.extras import DictCursor
 
-from database.config import config
+from database_config.config import config
 
 
 class Database:
@@ -64,11 +64,3 @@ def execute_query(query, params=None, fetch=None):
                 db.execute(query, params)
     except Exception as e:
         print(f"Exception occurred while executing: {e}")
-
-
-@log_decorator
-def get_active_user():
-    query = sql.SQL('SELECT * FROM {} WHERE is_login=TRUE;').format(
-        sql.Identifier('users')
-    )
-    return execute_query(query, fetch='one')
