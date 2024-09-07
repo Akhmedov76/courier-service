@@ -28,7 +28,7 @@ class Auth:
                 return {'is_login': True, 'role': 'super_admin'}
 
             query = '''
-            SELECT role FROM users WHERE username=%s AND password=%s
+            SELECT role FROM users WHERE phone_number=%s AND password=%s
             '''
             params = (username, password)
             user = execute_query(query, params, fetch='one')
@@ -37,7 +37,7 @@ class Auth:
                 print("Invalid username or password.")
                 return {'is_login': False}
 
-            update_query = 'UPDATE users SET status=TRUE WHERE username=%s'
+            update_query = 'UPDATE users SET status=TRUE WHERE phone_number=%s'
             execute_query(update_query, params=(username,))
             return {'is_login': True, 'role': user['role']}
         except ValueError:
