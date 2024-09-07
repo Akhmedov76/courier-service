@@ -1,9 +1,9 @@
-import threading
-
 from database_config.db_settings import execute_query
+from decorator.decorator import log_decorator
 
 
 class CreateTable:
+    @log_decorator
     def create_users_table(self):
         """
         Create users table if it doesn't exist
@@ -22,6 +22,7 @@ class CreateTable:
         execute_query(query)
         return True
 
+    @log_decorator
     def create_couriers_table(self):
         """
         Create couriers table if it doesn't exist
@@ -41,6 +42,7 @@ class CreateTable:
         execute_query(query)
         return True
 
+    @log_decorator
     def create_restaurants_table(self):
         """
         Create restaurants table if it doesn't exist
@@ -61,6 +63,7 @@ class CreateTable:
         execute_query(query)
         return True
 
+    @log_decorator
     def create_kitchen_menu_table(self):
         """
         Create kitchen menu table if it doesn't exist
@@ -76,6 +79,7 @@ class CreateTable:
         execute_query(query)
         return True
 
+    @log_decorator
     def create_branches_table(self):
         """
         Create branches table if it doesn't exist
@@ -94,6 +98,7 @@ class CreateTable:
         execute_query(query)
         return True
 
+    @log_decorator
     def create_order_table(self):
         """
         Create orders table if it doesn't exist
@@ -114,6 +119,7 @@ class CreateTable:
         execute_query(query)
         return True
 
+    @log_decorator
     def create_order_item_table(self):
         """
         Create order_item table if it doesn't exist
@@ -132,6 +138,7 @@ class CreateTable:
         execute_query(query)
         return True
 
+    @log_decorator
     def create_delivery_table(self):
         """
         Create delivery table if it doesn't exist
@@ -150,6 +157,7 @@ class CreateTable:
         execute_query(query)
         return True
 
+    @log_decorator
     def create_payment_table(self):
         """
         Create payment table if it doesn't exist
@@ -167,6 +175,7 @@ class CreateTable:
         execute_query(query)
         return True
 
+    @log_decorator
     def create_all_table(self):
         """
         Create all tables.
