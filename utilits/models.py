@@ -76,17 +76,28 @@ def create_tables():
         price DECIMAL(10, 2) NOT NULL,
         FOREIGN KEY (order_id) REFERENCES orders(id),
         FOREIGN KEY (kitchen_id) REFERENCES kitchen(id)
-); '''
+    ); '''
 
     create_delivery_table = ''' 
-            CREATE TABLE IF NOT EXISTS delivery (
-                id SERIAL PRIMARY KEY,
-                order_id INTEGER REFERENCES orders(id),
-                courier_id INTEGER REFERENCES couriers(id),
-                assigned_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                delivery_date TIMESTAMP
-            ); 
-        '''
+    CREATE TABLE IF NOT EXISTS delivery (
+        id SERIAL PRIMARY KEY,
+        order_id INTEGER REFERENCES orders(id),
+        courier_id INTEGER REFERENCES couriers(id),
+        assigned_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        delivery_date TIMESTAMP
+    ); '''
+
+
+    create_payment_table ='''
+    CREATE TABLE payments (
+        id BIGINT PRIMARY KEY,
+        order_id BIGINT NOT NULL,
+        payment_date BIGINT NOT NULL,
+        amount BIGINT NOT NULL,
+        payment_method BIGINT,
+        FOREIGN KEY (order_id) REFERENCES orders(id)
+    );'''
+
 
     execute_query(create_users_table)
     execute_query(create_couriers_table)
@@ -96,3 +107,4 @@ def create_tables():
     execute_query(create_order_table)
     execute_query(create_branches_table)
     execute_query(create_order_item_table)
+    execute_query(create_payment_table)
