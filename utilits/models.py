@@ -66,7 +66,7 @@ def create_tables():
     ); '''
 
     create_branches_table = '''
-    CREATE TABLE branches (
+    CREATE TABLE IF NOT EXISTS branches (
         id BIGINT PRIMARY KEY,
         name VARCHAR(255) NOT NULL,
         address VARCHAR(255),
@@ -77,6 +77,21 @@ def create_tables():
         FOREIGN KEY (manager_id) REFERENCES managers(id)
     ); '''
 
+
+    create_order_item_table ='''
+    CREATE TABLE IF NOT EXISTS order_item (
+        id BIGINT PRIMARY KEY,
+        order_id BIGINT NOT NULL,
+        kitchen_id BIGINT NOT NULL,
+        quantity BIGINT NOT NULL,
+        price DECIMAL(10, 2) NOT NULL,
+        FOREIGN KEY (order_id) REFERENCES orders(id),
+        FOREIGN KEY (kitchen_id) REFERENCES kitchen(id)
+); '''
+
+    
+
+
     execute_query(create_users_table)
     execute_query(create_couriers_table)
     execute_query(create_restaurants_table)
@@ -84,3 +99,4 @@ def create_tables():
     execute_query(create_kitchen_menu_table)
     execute_query(create_order_table)
     execute_query(create_branches_table)
+    execute_query(create_order_item_table)
