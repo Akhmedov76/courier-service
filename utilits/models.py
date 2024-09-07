@@ -9,7 +9,7 @@ def create_tables():
         email VARCHAR(50) UNIQUE NOT NULL,
         phone_number BIGINT UNIQUE NOT NULL,
         password VARCHAR(50) NOT NULL,
-        adress VARCHAR(50) NOT NULL,
+        address VARCHAR(50) NOT NULL,
         role VARCHAR(50) DEFAULT 'USER'
     ); '''
 

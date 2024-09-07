@@ -17,7 +17,7 @@ def auth_menu():
             if not result_login['is_login']:
                 auth_menu()
             elif result_login['role'] == 'super_admin':
-                pass
+                admin_menu()
             elif result_login['role'] == 'admin':
                 pass
             elif result_login['role'] == 'manager':
@@ -36,5 +36,12 @@ def auth_menu():
         auth_menu()
 
 
+def admin_menu():
+    print("""
+    salom
+    """)
+
+
 if __name__ == '__main__':
     create_tables()
+    auth_menu()
