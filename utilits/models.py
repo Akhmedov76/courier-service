@@ -10,6 +10,7 @@ def create_tables():
         phone_number BIGINT UNIQUE NOT NULL,
         password VARCHAR(50) NOT NULL,
         address VARCHAR(50) NOT NULL,
+        status BOOLEAN DEFAULT FALSE,
         role VARCHAR(50) NOT NULL
     ); '''
     crerate_info = '''
