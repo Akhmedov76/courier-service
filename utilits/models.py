@@ -55,7 +55,7 @@ def create_tables():
 
     create_order_table = '''
     CREATE TABLE IF NOT EXISTS orders(
-    id SERIAL PRIMARY KEY<
+    id SERIAL PRIMARY KEY,
     order_date TIMESTAMP NOT NULL,
     total_amount BIGINT NOT NULL,
     status VARCHAR(50) DEFAULT FALSE,
