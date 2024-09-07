@@ -52,7 +52,7 @@ def create_tables():
         phone_number VARCHAR(20),
         restaurant_id BIGINT,
         user_id BIGINT,
-        FOREIGN KEY (restaurant_id) REFERENCES restaurants(id),
+        FOREIGN KEY (restaurant_id) REFERENCES restaurants(id)
     ); '''
 
     create_order_table = '''
