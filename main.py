@@ -74,6 +74,33 @@ def view_order_menu():
         view_order_menu()
 
 
+def view_couriers_menu():
+    print("\n--- Manage Couriers ---")
+    print("""
+    1. Add Courier
+    2. View Couriers
+    3. Update Courier
+    4. Delete Courier
+    5. Exit
+    """)
+    choice: int = int(input("Choose an action: "))
+    if choice == 1:
+        pass
+    elif choice == 2:
+        pass
+    elif choice == 3:
+        pass
+    elif choice == 4:
+        pass
+    elif choice == 5:
+        print("Exiting...")
+        view_auth_menu()
+    else:
+        print("Invalid choice!")
+        view_couriers_menu()
+
+
+
 if __name__ == '__main__':
     threading.Thread(target=tables.create_all_table).start()
     threading.Thread(target=auth.logout).start()
