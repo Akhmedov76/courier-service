@@ -1,3 +1,6 @@
+from Tables.all_tables import create_tables
+
+
 def auth_menu():
     text = '''
 1. Login
@@ -24,3 +27,7 @@ def auth_menu():
     except Exception as e:
         print(f'Error: {e}')
         auth_menu()
+
+
+if __name__ == '__main__':
+    create_tables()
