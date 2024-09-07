@@ -48,7 +48,6 @@ def create_tables():
         price DECIMAL NOT NULL,
         restaurant_id INTEGER REFERENCES restaurants(id));
          '''
-    
 
     create_branches_table = '''
     CREATE TABLE IF NOT EXISTS branches (
@@ -72,7 +71,6 @@ def create_tables():
         branch_id INTEGER REFERENCES branches(id)
 
     ); '''
-
 
     create_order_item_table = '''
     CREATE TABLE IF NOT EXISTS order_item (
@@ -103,7 +101,6 @@ def create_tables():
         payment_method BIGINT,
         FOREIGN KEY (order_id) REFERENCES orders(id)
     );'''
-
 
     execute_query(create_users_table)
     execute_query(crerate_info)
