@@ -5,7 +5,7 @@ from Auth.auth import Auth
 from utilits.queries import Database
 from role.ClientUser.client import UserManager
 from role.Admin.admin import Manager
-from .role.Superadmin.superadmin import SuperAdmin
+from role.Superadmin.superadmin import SuperAdmin
 
 auth = Auth()
 query = Database()
@@ -122,13 +122,16 @@ def manage_user_menu():
     print("5. Logout")
     choice = input("Please select menu: ").strip()
     if choice == "1":
-        pass
+        user_manager.view_profile()
+        manage_user_menu()
     elif choice == "2":
-        pass
+        user_manager.view_my_orders()
+        manage_user_menu()
     elif choice == "3":
-        pass
+        user_manager.make_new_order()
+        manage_user_menu()
     elif choice == "4":
-        pass
+        user_manager.view_restaurant_menu()
     elif choice == "5":
         print("Logout!")
         view_auth_menu()
