@@ -53,7 +53,7 @@ def view_auth_menu():
             elif result_login['role'] == 'admin':
                 admin_menu()
             elif result_login['role'] == 'manager':
-                pass
+                manager_menu()
             elif result_login['role'] == 'user':
                 manage_user_menu()
         elif user_input == 3:
