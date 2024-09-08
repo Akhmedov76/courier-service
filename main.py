@@ -51,9 +51,38 @@ def admin_menu():
     print("""
 1. Create manager
 2. Create restaurant
-    """)
+3. Create courier
+4. Send message
+5. Show statistics
+6. Back to auth menu
+7. Logout
+""")
+    
+    choice = input("\nEnter your choice!").strip()
+    if choice == "1":
+        pass
+        admin_menu()
+    elif choice == "2":
+        pass
+        admin_menu()
+    elif choice == "3":
+        query.delete_admin_table()
+        admin_menu()
+    elif choice == "4":
+        pass
+    elif choice == "5":
+        pass
+    elif choice == "6":
+        print("See you")
+        view_auth_menu()
+    elif choice == "7":
+        print("Logout!")
+        view_auth_menu()
+    else:
+        print("Invalid choice!")
+        admin_menu()
 
-
+        
 def superadmin_menu():
     print("""
 \nSuperadmin menu\n
