@@ -6,12 +6,14 @@ from role.ClientUser.client import UserManager
 from role.Admin.admin import Manager
 from role.Superadmin.superadmin import SuperAdmin
 from role.Delivery.delivery import Delivery
-<<<<<<< Updated upstream
+<< << << < Updated
+upstream
 from role.Manager.manager import Food
 
-=======
+== == == =
 from email_sender.send_email_users import EmailSendMessage
->>>>>>> Stashed changes
+>> >> >> > Stashed
+changes
 
 auth = Auth()
 query = Database()
@@ -20,11 +22,13 @@ manager = Manager()
 user_manager = UserManager()
 sup_admin = SuperAdmin()
 delivery = Delivery()
-<<<<<<< Updated upstream
+<< << << < Updated
+upstream
 food = Food()
-=======
+== == == =
 email_sender = EmailSendMessage()
->>>>>>> Stashed changes
+>> >> >> > Stashed
+changes
 
 
 def view_auth_menu():
@@ -132,10 +136,10 @@ def manager_menu():
 3.Delete food 
 4.Exit
 """)
-    
+
     choice = input("Enter your choice: ")
     if choice == "1":
-        food.add_food
+        food.add_food()
         manager_menu()
     elif choice == "2":
         food.update_food()
@@ -149,8 +153,6 @@ def manager_menu():
     else:
         print("Invalid choice, please try again!")
         manager_menu()
-
-  
 
 
 def manage_user_menu():
