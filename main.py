@@ -60,18 +60,18 @@ def admin_menu():
 
     choice = input("\nEnter your choice!").strip()
     if choice == "1":
-        pass
+        
         admin_menu()
     elif choice == "2":
-        pass
+        query.add_restaurant()
         admin_menu()
     elif choice == "3":
-        query.delete_admin_table()
+        query.add_courier()
         admin_menu()
     elif choice == "4":
         pass
     elif choice == "5":
-        pass
+        view_reports_menu()
     elif choice == "6":
         print("See you")
         view_auth_menu()
