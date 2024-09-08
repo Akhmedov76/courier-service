@@ -60,7 +60,7 @@ def view_auth_menu():
 
 def admin_menu():
     print("""
-1. Manage manager info
+1. Manage manager
 2. Manage restaurant
 3. Manage courier
 4. Show statistics
@@ -143,7 +143,7 @@ def manage_user_menu():
     print("1. View My profile")
     print("2. View My orders")
     print("3. Make a new Order")
-    print("5. Logout")
+    print("4. Logout")
 
     choice = input("Please select menu: ").strip()
     if choice == "1":
@@ -274,7 +274,7 @@ def manage_couriers_menu():
         manage_couriers_menu()
     elif choice == "4":
         print("Goodbye!")
-        view_auth_menu()
+        admin_menu()
     else:
         print("Invalid choice!")
         manage_couriers_menu()
@@ -327,7 +327,7 @@ def manage_payments_menu():
 def send_messages_menu():
     print("\nSend Messages and Notifications:")
     print("1. Send Message to Users")
-    print("3. Back to Admin Menu")
+    print("2. Back to Admin Menu")
 
     choice = input("Please select menu: ").strip()
     if choice == "1":

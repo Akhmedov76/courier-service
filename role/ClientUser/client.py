@@ -166,12 +166,12 @@ class UserManager:
             if choice == 1:
 
                 query = '''INSERT INTO orders (order_date, total_amount, status, user_id, restaurant_id, branch_id)
-                           VALUES (NOW(), %s, 'pending', %s, %s, %s) RETURNING id'''
+                           VALUES (NOW(), %s, FALSE, %s, %s, %s) RETURNING id'''
                 params = (total_amount, user_id, selected_restaurant[0], selected_branch[0])
             else:
 
                 query = '''INSERT INTO orders (order_date, total_amount, status, user_id, restaurant_id)
-                           VALUES (NOW(), %s, 'pending', %s, %s) RETURNING id'''
+                           VALUES (NOW(), %s, FALSE, %s, %s) RETURNING id'''
                 params = (total_amount, user_id, selected_restaurant[0])
 
             order_id = execute_query(query, params=params, fetch='one')[0]

@@ -55,9 +55,9 @@ class CreateTable:
             phone_number VARCHAR(20) UNIQUE NOT NULL, 
             address VARCHAR(50) NOT NULL,  
             logo VARCHAR(50) NOT NULL,
-            user_id BIGINT NOT NULL,  
+            manager_id BIGINT NOT NULL,  
             CONSTRAINT fk_user
-            FOREIGN KEY (user_id) 
+            FOREIGN KEY (manager_id) 
             REFERENCES users(id)
         ); '''
         execute_query(query)
@@ -91,9 +91,9 @@ class CreateTable:
             address VARCHAR(255),
             phone_number VARCHAR(20),
             restaurant_id BIGINT,
-            user_id BIGINT,
+            manager_id BIGINT,
             FOREIGN KEY (restaurant_id) REFERENCES restaurants(id),
-            FOREIGN KEY (user_id) REFERENCES users(id)  
+            FOREIGN KEY (manager_id) REFERENCES users(id)  
         ); '''
         execute_query(query)
         return True

@@ -26,7 +26,8 @@ class Auth:
         email = input("Enter email: ").strip()
         phone_number = input("Enter phone number: ").strip()
         address = input("Enter address: ").strip()
-        password = hashlib.sha256(input("Password: ").strip().encode('utf-8')).hexdigest()
+        password = input("Enter password: ").strip()
+        hash_pass = hashlib.sha256(password.strip().encode('utf-8')).hexdigest()
         role = 'user'
         try:
             check_email(email)
@@ -45,7 +46,7 @@ class Auth:
             INSERT INTO users (name, email, phone_number, password, address, role)
             VALUES (%s, %s, %s, %s, %s, %s)
             '''
-            params = (name, email, phone_number, password, address, role)
+            params = (name, email, phone_number, hash_pass, address, role)
             execute_query(query, params=params)
             print("Registration successfully")
             return True
