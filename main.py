@@ -83,6 +83,30 @@ def admin_menu():
         admin_menu()
 
 
+def view_user_menu():
+    print("\nUser Menu:")
+    print("1. View My Profile")
+    print("2. View My Orders")
+    print("3. Make a New Order")
+    print("4. View Restaurant Menu")
+    print("5. Logout")
+    choice = input("Please select menu: ").strip()
+    if choice == "1":
+        pass
+    elif choice == "2":
+        pass
+    elif choice == "3":
+        pass
+    elif choice == "4":
+        pass
+    elif choice == "5":
+        print("Logout!")
+        view_auth_menu()
+    else:
+        print("Invalid choice!")
+        view_user_menu()
+
+
 def superadmin_menu():
     print("""
 \nSuperadmin menu\n
@@ -111,28 +135,6 @@ def superadmin_menu():
     else:
         print("Invalid choice!")
         superadmin_menu()
-
-
-def manage_users_menu():
-    print("\nManage Users:")
-    print("1. Add User")
-    print("2. Delete User")
-    print("3. Update User")
-    print("4. Back to Admin Menu")
-
-    choice = input("Please select menu: ").strip()
-    if choice == "1":
-        pass
-    elif choice == "2":
-        pass
-    elif choice == "3":
-        pass
-    elif choice == "4":
-        print("Goodbye!")
-        view_auth_menu()
-    else:
-        print("Invalid choice!")
-        manage_users_menu()
 
 
 def manage_orders_menu():
@@ -229,7 +231,7 @@ def view_reports_menu():
         view_reports_menu()
     elif choice == "4":
         print("Goodbye!")
-        view_auth_menu()
+        admin_menu()
     else:
         print("Invalid choice!")
         view_reports_menu()
