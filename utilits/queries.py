@@ -359,3 +359,59 @@ class Database:
         params = (payment_id,)
         threading.Thread(target=execute_query(query, params)).start()
         print("Payment deleted successfully!")
+
+    @log_decorator
+    def user_statistic(self):
+        user_id = input("Enter user ID: ").strip()
+
+        query = '''SELECT COUNT(*) AS total_orders, AVG(amount) AS average_payment, 
+                           MAX(amount) AS maximum_payment, MIN(amount) AS minimum_payment
+                    FROM payments
+                    WHERE user_id = %s'''
+        params = (user_id,)
+        result = execute_query(query, params)
+
+        if result:
+            total_orders, average_payment, maximum_payment, minimum_payment = result[0]
+            print(f"Total orders: {total_orders}")
+            print(f"Average payment: ${average_payment:.2f}")
+            print(f"Maximum payment: ${maximum_payment:.2f}")
+            print(f"Minimum payment: ${minimum_payment:.2f}")
+        else:
+            print("No orders found for the given user.")
+
+    @log_decorator
+    def order_statistics(self):
+        order_id = input("Enter order ID: ").strip()
+
+        query = '''SELECT COUNT(*) AS total_items, AVG(price) AS average_price, 
+                           MAX(price) AS maximum_price, MIN(price) AS minimum_price
+                    FROM order_item
+                    WHERE order_id = %s'''
+        params = (order_id,)
+        result = execute_query(query, params)
+
+        if result:
+            total_items, average_price, maximum_price, minimum_price = result[0]
+            print(f"Total items: {total_items}")
+            print(f"Average price: ${average_price:.2f}")
+            print(f"Maximum price: ${maximum_price:.2f}")
+            print(f"Minimum price: ${minimum_price:.2f}")
+        else:
+            print("No items found for the given order.")
+
+    @log_decorator
+    def financial_reports(self):
+        query = '''SELECT SUM(amount), payment_method, COUNT(order_id)
+                   FROM payments 
+                   GROUP BY payment_method;
+                '''
+        result = execute_query(query)
+
+        if result:
+            print("Financial reports:")
+            for total_amount, payment_method, order_count in result:
+                print(
+                    f"Payment Method: {payment_method}, Total Amount: ${total_amount:.2f}, Number of Orders: {order_count}")
+        else:
+            print("No payments found.")
