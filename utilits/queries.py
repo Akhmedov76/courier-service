@@ -19,6 +19,36 @@ def add_order():
     print("Order added successfully!")
 
 
+def update_order_table():
+    order_id = input("Enter the order ID: ").strip()
+    new_total_amount = input("Enter new total amount: ")
+
+    query = '''UPDATE orders SET total_amount = %s WHERE order_id = %s'''
+    params = (new_total_amount, order_id)
+    threading.Thread(target=execute_query(query, params)).start()
+    print("Order updated successfully!")
+
+
+@log_decorator
+def delete_order_table():
+    order_id = input("Enter the order ID: ").strip()
+
+    query = "DELETE FROM orders WHERE order_id = %s"
+    params = (order_id,)
+    threading.Thread(target=execute_query(query, params)).start()
+    print("Order deleted successfully!")
+
+
+@log_decorator
+def get_orders_by_restaurant():
+    restaurant_id = input("Enter restaurant ID: ").strip()
+
+    query = "SELECT * FROM orders WHERE restaurant_id = %s"
+    params = (restaurant_id,)
+    threading.Thread(target=execute_query(query, params, fetch='all')).start()
+    print("Orders retrieved successfully!")
+
+
 @log_decorator
 def add_courier():
     name = input("Enter courier's name: ")
@@ -32,6 +62,40 @@ def add_courier():
     params = (name, phone_number, vehicle_type, current_location, user_id)
     threading.Thread(target=execute_query(query, params)).start()
     print("Courier added successfully!")
+
+
+@log_decorator
+def update_courier_table():
+    courier_id = input("Enter the courier ID: ").strip()
+    new_name = input("Enter new courier's name: ")
+    new_phone_number = input("Enter new courier's phone number: ")
+    new_vehicle_type = input("Enter new courier's vehicle type: ")
+    new_current_location = input("Enter new courier's current location: ")
+
+    query = '''UPDATE couriers SET name = %s, phone_number = %s, vehicle_type = %s, current_location = %s 
+               WHERE courier_id = %s'''
+    params = (new_name, new_phone_number, new_vehicle_type, new_current_location, courier_id)
+    threading.Thread(target=execute_query(query, params)).start()
+    print("Courier updated successfully!")
+
+
+@log_decorator
+def delete_courier_table():
+    courier_id = input("Enter the courier ID: ").strip()
+
+    query = "DELETE FROM couriers WHERE courier_id = %s"
+    params = (courier_id,)
+    threading.Thread(target=execute_query(query, params)).start()
+    print("Courier deleted successfully!")
+
+
+@log_decorator
+def get_couriers_by_restaurant():
+    id = input("Enter restaurant ID: ").strip()
+    query = "SELECT * FROM couriers WHERE restaurant_id = %s"
+    params = (id,)
+    threading.Thread(target=execute_query(query, params, fetch='all')).start()
+    print("Couriers retrieved successfully!")
 
 
 @log_decorator
@@ -51,6 +115,32 @@ def add_restaurant():
 
 
 @log_decorator
+def update_restaurant_table():
+    restaurant_id = input("Enter the restaurant ID: ").strip()
+    new_name = input("Enter new restaurant's name: ")
+    new_description = input("Enter new restaurant's description: ")
+    new_phone_number = input("Enter new restaurant's phone number: ")
+    new_address = input("Enter new restaurant's address: ")
+    new_logo = input("Enter new restaurant's logo: ")
+
+    query = '''UPDATE restaurants SET name = %s, description = %s, phone_number = %s, address = %s, logo = %s 
+               WHERE restaurant_id = %s'''
+    params = (new_name, new_description, new_phone_number, new_address, new_logo, restaurant_id)
+    threading.Thread(target=execute_query(query, params)).start()
+    print("Restaurant updated successfully!")
+
+
+@log_decorator
+def delete_restaurant_table():
+    restaurant_id = input("Enter the restaurant ID: ").strip()
+
+    query = "DELETE FROM restaurants WHERE restaurant_id = %s"
+    params = (restaurant_id,)
+    threading.Thread(target=execute_query(query, params)).start()
+    print("Restaurant deleted successfully!")
+
+
+@log_decorator
 def add_branch():
     name = input("Enter branch's name: ")
     address = input("Enter branch's address: ")
@@ -63,6 +153,30 @@ def add_branch():
     params = (name, address, phone_number, restaurant_id, user_id)
     threading.Thread(target=execute_query(query, params)).start()
     print("Branch added successfully!")
+
+
+@log_decorator
+def update_branch_table():
+    branch_id = input("Enter the branch ID: ").strip()
+    new_name = input("Enter new branch's name: ")
+    new_address = input("Enter new branch's address: ")
+    new_phone_number = input("Enter new branch's phone number: ")
+
+    query = '''UPDATE branches SET name = %s, address = %s, phone_number = %s 
+               WHERE branch_id = %s'''
+    params = (new_name, new_address, new_phone_number, branch_id)
+    threading.Thread(target=execute_query(query, params)).start()
+    print("Branch updated successfully!")
+
+
+@log_decorator
+def delete_branch_table():
+    branch_id = input("Enter the branch ID: ").strip()
+
+    query = "DELETE FROM branches WHERE branch_id = %s"
+    params = (branch_id,)
+    threading.Thread(target=execute_query(query, params)).start()
+    print("Branch deleted successfully!")
 
 
 @log_decorator
@@ -80,6 +194,30 @@ def add_kitchen_menu():
 
 
 @log_decorator
+def update_kitchen_menu_item():
+    item_id = input("Enter the menu item ID: ").strip()
+    new_name = input("Enter new menu item's name: ")
+    new_description = input("Enter new menu item's description: ")
+    new_price = input("Enter new menu item's price: ")
+
+    query = '''UPDATE kitchen_menu SET name = %s, description = %s, price = %s 
+               WHERE item_id = %s'''
+    params = (new_name, new_description, new_price, item_id)
+    threading.Thread(target=execute_query(query, params)).start()
+    print("Kitchen menu item updated successfully!")
+
+
+@log_decorator
+def delete_kitchen_menu_item():
+    item_id = input("Enter the menu item ID: ").strip()
+
+    query = "DELETE FROM kitchen_menu WHERE item_id = %s"
+    params = (item_id,)
+    threading.Thread(target=execute_query(query, params)).start()
+    print("Kitchen menu item deleted successfully!")
+
+
+@log_decorator
 def add_order_item():
     order_id = input("Enter order ID: ")
     kitchen_id = input("Enter kitchen item ID: ")
@@ -91,6 +229,29 @@ def add_order_item():
     params = (order_id, kitchen_id, quantity, price)
     threading.Thread(target=execute_query(query, params)).start()
     print("Order item added successfully!")
+
+
+@log_decorator
+def update_order_item():
+    item_id = input("Enter the order item ID: ").strip()
+    new_quantity = input("Enter new quantity: ")
+    new_price = input("Enter new price: ")
+
+    query = '''UPDATE order_item SET quantity = %s, price = %s 
+               WHERE item_id = %s'''
+    params = (new_quantity, new_price, item_id)
+    threading.Thread(target=execute_query(query, params)).start()
+    print("Order item updated successfully!")
+
+
+@log_decorator
+def delete_order_item():
+    item_id = input("Enter the order item ID: ").strip()
+
+    query = "DELETE FROM order_item WHERE item_id = %s"
+    params = (item_id,)
+    threading.Thread(target=execute_query(query, params)).start()
+    print("Order item deleted successfully!")
 
 
 @log_decorator
@@ -108,6 +269,28 @@ def add_delivery():
 
 
 @log_decorator
+def update_delivery():
+    delivery_id = input("Enter the delivery ID: ").strip()
+    new_courier_id = input("Enter new courier ID: ")
+
+    query = '''UPDATE delivery SET courier_id = %s 
+               WHERE delivery_id = %s'''
+    params = (new_courier_id, delivery_id)
+    threading.Thread(target=execute_query(query, params)).start()
+    print("Delivery updated successfully!")
+
+
+@log_decorator
+def delete_delivery():
+    delivery_id = input("Enter the delivery ID: ").strip()
+
+    query = "DELETE FROM delivery WHERE delivery_id = %s"
+    params = (delivery_id,)
+    threading.Thread(target=execute_query(query, params)).start()
+    print("Delivery deleted successfully!")
+
+
+@log_decorator
 def add_payment():
     order_id = input("Enter order ID: ")
     payment_date = input("Enter payment date (YYYY-MM-DD HH:MM:SS): ")
@@ -119,3 +302,25 @@ def add_payment():
     params = (order_id, payment_date, amount, payment_method)
     threading.Thread(target=execute_query(query, params)).start()
     print("Payment added successfully!")
+
+
+@log_decorator
+def update_payment():
+    payment_id = input("Enter the payment ID: ").strip()
+    new_amount = input("Enter new amount: ")
+
+    query = '''UPDATE payments SET amount = %s 
+               WHERE payment_id = %s'''
+    params = (new_amount, payment_id)
+    threading.Thread(target=execute_query(query, params)).start()
+    print("Payment updated successfully!")
+
+
+@log_decorator
+def delete_payment():
+    payment_id = input("Enter the payment ID: ").strip()
+
+    query = "DELETE FROM payments WHERE payment_id = %s"
+    params = (payment_id,)
+    threading.Thread(target=execute_query(query, params)).start()
+    print("Payment deleted successfully!")
