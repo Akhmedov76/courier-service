@@ -96,10 +96,10 @@ class Database:
 
     @log_decorator
     def add_restaurant(self):
-        name = input("Enter restaurant's name: ")
-        description = input("Enter restaurant's description: ")
-        phone_number = input("Enter restaurant's phone number: ")
-        address = input("Enter restaurant's address: ")
+        name = input("Enter restaurant's name: ").strip()
+        description = input("Enter restaurant's description: ").capitalize().strip()
+        phone_number = input("Enter restaurant's phone number: ").strip()
+        address = input("Enter restaurant's address: ").capitalize().strip()
         logo = input("Enter restaurant's logo: ")
         user_id = input("Enter user ID: ")
 

@@ -52,10 +52,10 @@ class CreateTable:
             id SERIAL PRIMARY KEY,
             name VARCHAR(50) UNIQUE NOT NULL,
             description VARCHAR(200) NOT NULL,
-            phone_number VARCHAR(20) UNIQUE NOT NULL,  -- Telefon raqam uchun VARCHAR tavsiya qilinadi
-            address VARCHAR(50) NOT NULL,  -- Imlo to'g'rilandi
+            phone_number VARCHAR(20) UNIQUE NOT NULL, 
+            address VARCHAR(50) NOT NULL,  
             logo VARCHAR(50) NOT NULL,
-            user_id BIGINT NOT NULL,  -- users jadvalidan FOREIGN KEY ishlatiladi
+            user_id BIGINT NOT NULL,  
             CONSTRAINT fk_user
             FOREIGN KEY (user_id) 
             REFERENCES users(id)

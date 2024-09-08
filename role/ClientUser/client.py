@@ -6,13 +6,12 @@ class UserManager:
     @log_decorator
     def view_profile(self):
         try:
-            user_id = int(input("Enter your user ID: "))
             query = '''
                 SELECT name, email, phone_number, address, role, status
                 FROM users
-                WHERE id = %s
+                WHERE status = True
             '''
-            user_data = execute_query(query, params=(user_id,), fetch='one')
+            user_data = execute_query(query, fetch='one')
 
             if user_data:
                 name, email, phone_number, address, role, status = user_data
@@ -35,19 +34,18 @@ class UserManager:
     @log_decorator
     def view_my_orders(self):
         try:
-            user_id = int(input("Enter your user ID: "))
             query = '''
                 SELECT o.id, o.order_date, o.total_amount, o.status, r.name AS restaurant_name
                 FROM orders o
                 JOIN restaurants r ON o.restaurant_id = r.id
-                WHERE o.user_id = %s
+                WHERE o.status = True
                 ORDER BY o.order_date DESC
             '''
-            orders = execute_query(query, params=(user_id,), fetch='all')
+            orders = execute_query(query, fetch='all')
 
             if not orders:
                 print("You have no orders.")
-                return
+                return False
 
             print("\nYour Orders:")
             for order in orders:
