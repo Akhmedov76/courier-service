@@ -17,7 +17,7 @@ class CreateTable:
            password VARCHAR(255) NOT NULL,  
            address VARCHAR(255) NOT NULL,
            status BOOLEAN DEFAULT FALSE,
-           Role VARCHAR(50) NOT NULL
+           role VARCHAR(50) NOT NULL
         );'''
         execute_query(query)
         return True

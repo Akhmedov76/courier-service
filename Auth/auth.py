@@ -26,7 +26,7 @@ class Auth:
         phone_number = input("Enter phone number: ").strip()
         address = input("Enter address: ").strip()
         password = hashlib.sha256(input("Password: ").strip().encode('utf-8')).hexdigest()
-        role = input("Enter Role (user, manager, admin): ").lower().strip()
+        role = input("Enter role (user, manager, admin): ").lower().strip()
         try:
             check_email(email)
             query = '''
@@ -37,7 +37,7 @@ class Auth:
                 print("Phone number or email already exists.")
                 return False
             query = '''
-            INSERT INTO users (name, email, phone_number, password, address, Role)
+            INSERT INTO users (name, email, phone_number, password, address, role)
             VALUES (%s, %s, %s, %s, %s, %s)
             '''
             params = (name, email, phone_number, password, address, role)
@@ -63,10 +63,10 @@ class Auth:
 
             if phone_number == SUPERADMIN_LOGIN and password == hashlib.sha256(
                     SUPERADMIN_PASSWORD.encode('utf-8')).hexdigest():
-                return {'is_login': True, 'Role': 'super_admin'}
+                return {'is_login': True, 'role': 'super_admin'}
 
             query = '''
-            SELECT Role FROM users WHERE phone_number=%s AND password=%s
+            SELECT role FROM users WHERE phone_number=%s AND password=%s
             '''
             params = (phone_number, password)
             user = execute_query(query, params, fetch='one')
@@ -79,7 +79,7 @@ class Auth:
             update_query = 'UPDATE users SET status=TRUE WHERE phone_number=%s'
             execute_query(update_query, params=(phone_number,))
 
-            return {'is_login': True, 'Role': user['Role']}
+            return {'is_login': True, 'role': user['role']}
         except ValueError:
             print("Invalid input. Please try again.")
             return None

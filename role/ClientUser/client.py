@@ -4,11 +4,11 @@ from decorator.decorator import log_decorator
 
 class UserManager:
     @log_decorator
-    def view_profile(user_id):
+    def view_profile(self):
         try:
-
+            user_id = int(input("Enter your user ID: "))
             query = '''
-                SELECT name, email, phone_number, address, Role, status
+                SELECT name, email, phone_number, address, role, status
                 FROM users
                 WHERE id = %s
             '''

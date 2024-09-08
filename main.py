@@ -132,6 +132,7 @@ def manage_user_menu():
         manage_user_menu()
     elif choice == "4":
         user_manager.view_restaurant_menu()
+        manage_user_menu()
     elif choice == "5":
         print("Logout!")
         view_auth_menu()
