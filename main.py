@@ -3,10 +3,12 @@ import threading
 from utilits.models import CreateTable
 from Auth.auth import Auth
 from utilits.queries import Database
+from role.Admin.admin import Manager
 
 auth = Auth()
 query = Database()
 tables = CreateTable()
+manager = Manager
 
 
 def view_auth_menu():
@@ -49,7 +51,7 @@ def view_auth_menu():
 
 def admin_menu():
     print("""
-1. Create manager
+1. Manage manager info
 2. Manage restaurant
 3. Create courier
 4. Send message
@@ -77,6 +79,31 @@ def admin_menu():
     elif choice == "7":
         print("Logout!")
         view_auth_menu()
+    else:
+        print("Invalid choice!")
+        admin_menu()
+    
+
+def manage_manager_menu():
+    print("""
+1. Create manager
+2. Update manager
+3. Delete manager
+4. Back to admin menu
+""")
+    
+    choice = input("\nEnter your choice!").strip()
+    if choice == "1":
+        manager.add_manager()
+        manage_manager_menu()
+    elif choice == "2":
+        manager.update_manager()
+        manage_manager_menu()
+    elif choice == "3":
+        manager.delete_manager()
+        manage_manager_menu()
+    elif choice == "4":
+        admin_menu()
     else:
         print("Invalid choice!")
         admin_menu()
