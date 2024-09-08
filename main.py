@@ -127,13 +127,13 @@ def manager_menu():
     
     choice = input("Enter your choice: ")
     if choice == "1":
-        pass
+        food.add_food
         manager_menu()
     elif choice == "2":
-        pass
+        food.update_food()
         manager_menu()
     elif choice == "3":
-        pass
+        food.delete_food()
         manager_menu()
     elif choice == "4":
         print("Exiting...")
