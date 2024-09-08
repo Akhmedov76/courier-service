@@ -48,19 +48,19 @@ def view_auth_menu():
 
 def admin_menu():
     print("""
-1. Add new user and manager
-2. 
+1. Create manager
+2. Create restaurant
     """)
 
 
 def superadmin_menu():
     print("""
-\nSuperadmin menu!
-\n1.Create admin
-\n2.Update admin
-\n3.Delete admin
-\n4.Show statistics
-\n5.Logout
+\nSuperadmin menu\n
+1.Create admin
+2.Update admin
+3.Delete admin
+4.Show statistics
+5.Logout
 """)
 
     choice = input("\nEnter your choice!").strip()
