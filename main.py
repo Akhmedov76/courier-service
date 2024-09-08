@@ -4,7 +4,6 @@ from utilits.models import CreateTable
 from Auth.auth import Auth
 from utilits.queries import Database
 
-
 auth = Auth()
 query = Database()
 tables = CreateTable()
@@ -46,12 +45,12 @@ def view_auth_menu():
         print(f'Error: {e}')
         view_auth_menu()
 
+
 def admin_menu():
     print("""
 1. Add new user and manager
-
+2. 
     """)
-
 
 
 def superadmin_menu():
@@ -63,14 +62,14 @@ def superadmin_menu():
 \n4.Show statistics
 \n5.Logout
 """)
-    
+
     choice = input("\nEnter your choice!").strip()
     if choice == "1":
-        query.add_admin
+        query.add_admin()
         superadmin_menu()
     elif choice == "2":
         query.update_admin_table()
-        superadmin_menu
+        superadmin_menu()
     elif choice == "3":
         query.delete_admin_table()
         superadmin_menu()
