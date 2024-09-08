@@ -166,7 +166,7 @@ class Database:
         print("Restaurant added successfully!")
 
     @log_decorator
-    def update_restaurant_table(self):
+    def update_restaurant(self):
         restaurant_id = input("Enter the restaurant ID: ").strip()
         new_name = input("Enter new restaurant's name: ")
         new_description = input("Enter new restaurant's description: ")
@@ -181,7 +181,7 @@ class Database:
         print("Restaurant updated successfully!")
 
     @log_decorator
-    def delete_restaurant_table(self):
+    def delete_restaurant(self):
         restaurant_id = input("Enter the restaurant ID: ").strip()
 
         query = "DELETE FROM restaurants WHERE restaurant_id = %s"
@@ -204,7 +204,7 @@ class Database:
         print("Branch added successfully!")
 
     @log_decorator
-    def update_branch_table(self):
+    def update_branch(self):
         branch_id = input("Enter the branch ID: ").strip()
         new_name = input("Enter new branch's name: ")
         new_address = input("Enter new branch's address: ")
@@ -217,7 +217,7 @@ class Database:
         print("Branch updated successfully!")
 
     @log_decorator
-    def delete_branch_table(self):
+    def delete_branch(self):
         branch_id = input("Enter the branch ID: ").strip()
 
         query = "DELETE FROM branches WHERE branch_id = %s"

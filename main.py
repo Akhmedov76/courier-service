@@ -50,7 +50,7 @@ def view_auth_menu():
 def admin_menu():
     print("""
 1. Create manager
-2. Create restaurant
+2. Manage restaurant
 3. Create courier
 4. Send message
 5. Show statistics
@@ -63,8 +63,7 @@ def admin_menu():
         
         admin_menu()
     elif choice == "2":
-        query.add_restaurant()
-        admin_menu()
+        manage_restaurants_menu()
     elif choice == "3":
         query.add_courier()
         admin_menu()
@@ -171,20 +170,25 @@ def manage_restaurants_menu():
 
     choice = input("Please select menu: ").strip()
     if choice == "1":
-        pass
+        query.add_restaurant()
+        manage_restaurants_menu()
     elif choice == "2":
-        pass
+        query.update_restaurant()
+        manage_restaurants_menu()
     elif choice == "3":
-        pass
+        query.delete_restaurant()
     elif choice == "4":
-        pass
+        query.add_branch()
+        manage_restaurants_menu()
     elif choice == "5":
-        pass
+        query.update_branch()
+        manage_restaurants_menu()
     elif choice == "6":
-        pass
+        query.delete_branch()
+        manage_restaurants_menu()
     elif choice == "7":
         print("Goodbye!")
-        view_auth_menu()
+        admin_menu()
     else:
         print("Invalid choice!")
         manage_restaurants_menu()
