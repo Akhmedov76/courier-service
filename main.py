@@ -48,7 +48,8 @@ def view_auth_menu():
 
 def admin_menu():
     print("""
-    salom
+1. Add new user and manager
+
     """)
 
 
@@ -59,7 +60,7 @@ def manage_users_menu():
     print("3. Update User")
     print("4. Back to Admin Menu")
 
-    choice = input("Please select an option: ").strip()
+    choice = input("Please select menu: ").strip()
     if choice == "1":
         pass
     elif choice == "2":
@@ -81,7 +82,7 @@ def manage_orders_menu():
     print("3. View Order Details")
     print("4. Back to Admin Menu")
 
-    choice = input("Please select an option: ").strip()
+    choice = input("Please select menu: ").strip()
     if choice == "1":
         pass
     elif choice == "2":
@@ -106,7 +107,7 @@ def manage_restaurants_menu():
     print("6. Delete Branch")
     print("7. Back to Admin Menu")
 
-    choice = input("Please select an option: ").strip()
+    choice = input("Please select menu: ").strip()
     if choice == "1":
         pass
     elif choice == "2":
@@ -134,7 +135,7 @@ def manage_couriers_menu():
     print("3. Delete Courier")
     print("4. Back to Admin Menu")
 
-    choice = input("Please select an option: ").strip()
+    choice = input("Please select menu: ").strip()
     if choice == "1":
         pass
     elif choice == "2":
@@ -156,7 +157,7 @@ def view_reports_menu():
     print("3. Financial Reports")
     print("4. Back to Admin Menu")
 
-    choice = input("Please select an option: ").strip()
+    choice = input("Please select menu: ").strip()
     if choice == "1":
         pass
     elif choice == "2":
@@ -177,7 +178,7 @@ def manage_payments_menu():
     print("2. Update Payment Methods")
     print("3. Back to Admin Menu")
 
-    choice = input("Please select an option: ").strip()
+    choice = input("Please select menu: ").strip()
     if choice == "1":
         pass
     elif choice == "2":
@@ -196,7 +197,7 @@ def send_messages_menu():
     print("2. Send Message to Couriers")
     print("3. Back to Admin Menu")
 
-    choice = input("Please select an option: ").strip()
+    choice = input("Please select menu: ").strip()
     if choice == "1":
         pass
     elif choice == "2":
