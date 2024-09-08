@@ -176,6 +176,23 @@ class CreateTable:
         return True
 
     @log_decorator
+    def send_message_users_table(self):
+        """
+        Create send_message_users table if it doesn't exist
+        """
+        query = '''
+        CREATE TABLE IF NOT EXISTS messages (
+            id SERIAL PRIMARY KEY, 
+            user_id BIGINT NOT NULL, 
+            message VARCHAR(255) NOT NULL, 
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (user_id) REFERENCES users(id)
+        );
+        '''
+        execute_query(query)
+        return True
+
+    @log_decorator
     def create_all_table(self):
         """
         Create all tables.
@@ -189,4 +206,5 @@ class CreateTable:
         self.create_order_item_table()
         self.create_delivery_table()
         self.create_payment_table()
+        self.send_message_users_table()
         return True

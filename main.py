@@ -6,8 +6,12 @@ from role.ClientUser.client import UserManager
 from role.Admin.admin import Manager
 from role.Superadmin.superadmin import SuperAdmin
 from role.Delivery.delivery import Delivery
+<<<<<<< Updated upstream
 from role.Manager.manager import Food
 
+=======
+from email_sender.send_email_users import EmailSendMessage
+>>>>>>> Stashed changes
 
 auth = Auth()
 query = Database()
@@ -16,7 +20,11 @@ manager = Manager()
 user_manager = UserManager()
 sup_admin = SuperAdmin()
 delivery = Delivery()
+<<<<<<< Updated upstream
 food = Food()
+=======
+email_sender = EmailSendMessage()
+>>>>>>> Stashed changes
 
 
 def view_auth_menu():
@@ -181,7 +189,8 @@ def superadmin_menu():
 2.Update admin
 3.Delete admin
 4.Show statistics
-5.Logout
+5.Send message
+6.Logout
 """)
 
     choice = input("\nEnter your choice!").strip()
@@ -197,6 +206,9 @@ def superadmin_menu():
     elif choice == "4":
         pass
     elif choice == "5":
+        send_messages_menu()
+        superadmin_menu()
+    elif choice == "6":
         print("Logout!")
         view_auth_menu()
     else:
@@ -334,46 +346,18 @@ def manage_payments_menu():
 def send_messages_menu():
     print("\nSend Messages and Notifications:")
     print("1. Send Message to Users")
-    print("2. Send Message to Couriers")
     print("3. Back to Admin Menu")
 
     choice = input("Please select menu: ").strip()
     if choice == "1":
-        pass
+        email_sender.send_email_all_users()
+        send_messages_menu()
     elif choice == "2":
-        pass
-    elif choice == "3":
         print("Goodbye!")
         view_auth_menu()
     else:
         print("Invalid choice!")
         send_messages_menu()
-
-
-def view_order_items_menu():
-    print("\n--- Manage Order Items ---")
-    print("""
-    1. Add Order Item
-    2. View Order Items
-    3. Update Order Item
-    4. Delete Order Item
-    5. Exit
-    """)
-    choice: int = int(input("Choose an action: "))
-    if choice == 1:
-        pass
-    elif choice == 2:
-        pass
-    elif choice == 3:
-        pass
-    elif choice == 4:
-        pass
-    elif choice == 5:
-        print("Exiting...")
-        view_auth_menu()
-    else:
-        print("Invalid choice!")
-        view_order_items_menu()
 
 
 def view_delivery_menu():
