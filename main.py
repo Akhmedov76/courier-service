@@ -66,7 +66,7 @@ def admin_menu():
 
     choice = input("\nEnter your choice!").strip()
     if choice == "1":
-
+        manage_manager_menu()
         admin_menu()
     elif choice == "2":
         manage_restaurants_menu()
