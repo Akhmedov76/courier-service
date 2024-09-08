@@ -1,14 +1,18 @@
 import threading
 
-from utilits.models import CreateTable
+from Utilits.models import CreateTable
 from Auth.auth import Auth
-from utilits.queries import Database
+from Utilits.queries import Database
+from role.ClientUser.client import UserManager
 from role.Admin.admin import Manager
+from .role.Superadmin.superadmin import SuperAdmin
 
 auth = Auth()
 query = Database()
 tables = CreateTable()
-manager = Manager
+manager = Manager()
+user_manager = UserManager()
+sup_admin = SuperAdmin()
 
 
 def view_auth_menu():
@@ -82,7 +86,7 @@ def admin_menu():
     else:
         print("Invalid choice!")
         admin_menu()
-    
+
 
 def manage_manager_menu():
     print("""
@@ -91,7 +95,7 @@ def manage_manager_menu():
 3. Delete manager
 4. Back to admin menu
 """)
-    
+
     choice = input("\nEnter your choice!").strip()
     if choice == "1":
         manager.add_manager()
@@ -145,13 +149,13 @@ def superadmin_menu():
 
     choice = input("\nEnter your choice!").strip()
     if choice == "1":
-        query.add_admin()
+        sup_admin.add_admin()
         superadmin_menu()
     elif choice == "2":
-        query.update_admin_table()
+        sup_admin.update_admin_table()
         superadmin_menu()
     elif choice == "3":
-        query.delete_admin_table()
+        sup_admin.delete_admin_table()
         superadmin_menu()
     elif choice == "4":
         pass
