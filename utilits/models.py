@@ -86,7 +86,7 @@ class CreateTable:
         """
         query = '''
         CREATE TABLE IF NOT EXISTS branches (
-            id BIGINT PRIMARY KEY,
+            id BIGSERIAL PRIMARY KEY,
             name VARCHAR(255) NOT NULL,
             address VARCHAR(255),
             phone_number VARCHAR(20),
@@ -108,7 +108,7 @@ class CreateTable:
             id SERIAL PRIMARY KEY,
             order_date TIMESTAMP NOT NULL,
             total_amount DECIMAL(10, 2) NOT NULL,
-            status VARCHAR(50) DEFAULT 'Pending',  
+            status BOOLEAN DEFAULT FALSE,  
             user_id INTEGER NOT NULL,
             restaurant_id INTEGER NOT NULL,
             branch_id INTEGER NOT NULL,

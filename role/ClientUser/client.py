@@ -86,11 +86,45 @@ class UserManager:
         try:
             user_id = int(input("Enter your user ID: "))
 
-            query = "SELECT id, name FROM restaurants"
-            restaurants = execute_query(query, fetch='all')
+            print("Do you want to place an order based on:")
+            print("1. Branch")
+            print("2. Restaurant")
+            choice = int(input("Enter 1 or 2: "))
 
-            if not restaurants:
-                print("No restaurants available.")
+            if choice == 1:
+
+                query = "SELECT id, name FROM branches"
+                branches = execute_query(query, fetch='all')
+
+                if not branches:
+                    print("No branches available.")
+                    return
+
+                print("\nAvailable Branches:")
+                for idx, branch in enumerate(branches, 1):
+                    print(f"{idx}. {branch[1]}")
+
+                branch_choice = int(input("Select a branch by number: ")) - 1
+                selected_branch = branches[branch_choice]
+
+                query = "SELECT id, name FROM restaurants WHERE branch_id = %s"
+                restaurants = execute_query(query, params=(selected_branch[0],), fetch='all')
+
+                if not restaurants:
+                    print("No restaurants available for this branch.")
+                    return
+
+            elif choice == 2:
+
+                query = "SELECT id, name FROM restaurants"
+                restaurants = execute_query(query, fetch='all')
+
+                if not restaurants:
+                    print("No restaurants available.")
+                    return
+
+            else:
+                print("Invalid choice.")
                 return
 
             print("\nAvailable Restaurants:")
@@ -112,10 +146,10 @@ class UserManager:
 
             print("\nRestaurant Menu:")
             for idx, item in enumerate(menu_items, 1):
-                print(f"{idx}. {item[1]} - ${item[2]:.2f}")
+                print(f"{idx}. {item[1]} - {item[2]:.2f}")
 
             while True:
-                menu_choice = int(input("\nSelect a menu item by number (or 0 to finish): "))
+                menu_choice = int(input("\nSelect menu by number (or 0 to finish): "))
                 if menu_choice == 0:
                     break
 
@@ -129,9 +163,17 @@ class UserManager:
                 print("No items selected.")
                 return False
 
-            query = '''INSERT INTO orders (order_date, total_amount, status, user_id, restaurant_id)
-                       VALUES (NOW(), %s, 'pending', %s, %s) RETURNING id'''
-            params = (total_amount, user_id, selected_restaurant[0])
+            if choice == 1:
+
+                query = '''INSERT INTO orders (order_date, total_amount, status, user_id, restaurant_id, branch_id)
+                           VALUES (NOW(), %s, 'pending', %s, %s, %s) RETURNING id'''
+                params = (total_amount, user_id, selected_restaurant[0], selected_branch[0])
+            else:
+
+                query = '''INSERT INTO orders (order_date, total_amount, status, user_id, restaurant_id)
+                           VALUES (NOW(), %s, 'pending', %s, %s) RETURNING id'''
+                params = (total_amount, user_id, selected_restaurant[0])
+
             order_id = execute_query(query, params=params, fetch='one')[0]
 
             for item_id, quantity, price in order_items:
@@ -143,42 +185,10 @@ class UserManager:
             print("Order placed successfully!")
             print(f"Total amount: ${total_amount:.2f}")
             return True
-
-        except Exception as e:
-            print(f"Error placing the order: {e}")
+        except IndexError:
+            print("Error: Invalid selection. Please try again.")
             return False
 
-    @log_decorator
-    def view_restaurant_menu(self):
-        try:
-
-            query = "SELECT id, name, description FROM restaurants"
-            restaurants = execute_query(query, fetch='all')
-
-            if restaurants:
-                print("\nAvailable Restaurants:")
-                for restaurant in restaurants:
-                    restaurant_id, restaurant_name, description = restaurant
-                    print(f"\nRestaurant: {restaurant_name}")
-                    print(f"Description: {description}")
-
-                    query = "SELECT name, description, price FROM kitchen_menu WHERE restaurant_id = %s"
-                    menu_items = execute_query(query, params=(restaurant_id,), fetch='all')
-
-                    if menu_items:
-                        print("Menu:")
-                        for item in menu_items:
-                            name, item_description, price = item
-                            print(f"- {name}: {item_description} - ${price:.2f}")
-                            print("----------------------------------------")
-                        return True
-                    else:
-                        print("No menu available for this restaurant.")
-                        return False
-            else:
-                print("No restaurants available.")
-                return False
-
-        except Exception as e:
-            print(f"Error retrieving restaurant menu: {e}")
+        except ValueError:
+            print("Error: Invalid input. Please enter a valid number.")
             return False

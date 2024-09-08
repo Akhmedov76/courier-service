@@ -143,7 +143,6 @@ def manage_user_menu():
     print("1. View My profile")
     print("2. View My orders")
     print("3. Make a new Order")
-    print("4. View Restaurant Menu")
     print("5. Logout")
 
     choice = input("Please select menu: ").strip()
@@ -157,9 +156,6 @@ def manage_user_menu():
         user_manager.make_new_order()
         manage_user_menu()
     elif choice == "4":
-        user_manager.view_restaurant_menu()
-        manage_user_menu()
-    elif choice == "5":
         print("Logout!")
         view_auth_menu()
     else:

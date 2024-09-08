@@ -27,7 +27,7 @@ class Auth:
         phone_number = input("Enter phone number: ").strip()
         address = input("Enter address: ").strip()
         password = hashlib.sha256(input("Password: ").strip().encode('utf-8')).hexdigest()
-        role = input("Enter role (user, manager, admin): ").lower().strip()
+        role = 'user'
         try:
             check_email(email)
             subjects = "You logged in"
