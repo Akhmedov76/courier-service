@@ -58,11 +58,11 @@ class Database:
         phone_number = input("Enter restaurant's phone number: ").strip()
         address = input("Enter restaurant's address: ").capitalize().strip()
         logo = input("Enter restaurant's logo: ")
-        user_id = input("Enter manager ID: ")
+        manager_id = input("Enter manager ID: ")
 
         query = '''INSERT INTO restaurants (name, description, phone_number, address, logo, user_id) 
                    VALUES (%s, %s, %s, %s, %s, %s)'''
-        params = (name, description, phone_number, address, logo, user_id)
+        params = (name, description, phone_number, address, logo, manager_id)
         threading.Thread(target=execute_query(query, params)).start()
         print("Restaurant added successfully!")
 
@@ -99,11 +99,11 @@ class Database:
         address = input("Enter branch's address: ")
         phone_number = input("Enter branch's phone number: ")
         restaurant_id = input("Enter restaurant ID: ")
-        user_id = input("Enter user ID: ")
+        manager_id = input("Enter manager ID: ")
 
         query = '''INSERT INTO branches (name, address, phone_number, restaurant_id, user_id) 
                    VALUES (%s, %s, %s, %s, %s)'''
-        params = (name, address, phone_number, restaurant_id, user_id)
+        params = (name, address, phone_number, restaurant_id, manager_id)
         threading.Thread(target=execute_query(query, params)).start()
         print("Branch added successfully!")
 
