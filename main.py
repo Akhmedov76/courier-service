@@ -57,7 +57,7 @@ def admin_menu():
 6. Back to auth menu
 7. Logout
 """)
-    
+
     choice = input("\nEnter your choice!").strip()
     if choice == "1":
         pass
@@ -82,7 +82,7 @@ def admin_menu():
         print("Invalid choice!")
         admin_menu()
 
-        
+
 def superadmin_menu():
     print("""
 \nSuperadmin menu\n
@@ -219,11 +219,14 @@ def view_reports_menu():
 
     choice = input("Please select menu: ").strip()
     if choice == "1":
-        pass
+        query.user_statistic()
+        view_reports_menu()
     elif choice == "2":
-        pass
+        query.order_statistics()
+        view_reports_menu()
     elif choice == "3":
-        pass
+        query.financial_reports()
+        view_reports_menu()
     elif choice == "4":
         print("Goodbye!")
         view_auth_menu()
