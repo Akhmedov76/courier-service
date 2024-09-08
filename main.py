@@ -1,5 +1,4 @@
 import threading
-
 from utilits.models import CreateTable
 from Auth.auth import Auth
 from utilits.queries import Database
@@ -7,6 +6,8 @@ from role.ClientUser.client import UserManager
 from role.Admin.admin import Manager
 from role.Superadmin.superadmin import SuperAdmin
 from role.Delivery.delivery import Delivery
+from role.Manager.manager import Food
+
 
 auth = Auth()
 query = Database()
@@ -15,6 +16,7 @@ manager = Manager()
 user_manager = UserManager()
 sup_admin = SuperAdmin()
 delivery = Delivery()
+food = Food()
 
 
 def view_auth_menu():
@@ -116,9 +118,31 @@ def manage_manager_menu():
 
 
 def manager_menu():
-    print("Manager menu")
-    print("1. Make a new food")
-    print("2. View My order")
+    print("""\nManager menu:
+1.Add food
+2.Update food 
+3.Delete food 
+4.Exit
+""")
+    
+    choice = input("Enter your choice: ")
+    if choice == "1":
+        pass
+        manager_menu()
+    elif choice == "2":
+        pass
+        manager_menu()
+    elif choice == "3":
+        pass
+        manager_menu()
+    elif choice == "4":
+        print("Exiting...")
+        view_auth_menu()
+    else:
+        print("Invalid choice, please try again!")
+        manager_menu()
+
+  
 
 
 def manage_user_menu():
@@ -128,6 +152,7 @@ def manage_user_menu():
     print("3. Make a new Order")
     print("4. View Restaurant Menu")
     print("5. Logout")
+
     choice = input("Please select menu: ").strip()
     if choice == "1":
         user_manager.view_profile()
