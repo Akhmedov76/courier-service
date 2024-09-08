@@ -15,7 +15,7 @@ class SuperAdmin:
         phone_number = input("Enter phone number: ").strip()
         address = input("Enter address: ").strip()
         password = hashlib.sha256(input("Password: ").strip().encode('utf-8')).hexdigest()
-        role = input("Enter Role (user, manager, admin): ").lower().strip()
+        role = 'admin'
         try:
             check_email(email)
             query = '''
@@ -46,7 +46,7 @@ class SuperAdmin:
         new_email = input("Enter new email: ").strip()
         new_phone_number = input("Enter new phone number: ").strip()
         new_address = input("Enter new address: ").strip()
-        new_role = input("Enter new Role (user, manager, admin): ").lower().strip()
+        new_role = 'admin'
 
         query = '''UPDATE users SET name = %s, email = %s, phone_number = %s, address = %s, Role = %s WHERE id = %s'''
         params = (new_name, new_email, new_phone_number, new_address, new_role, admin_id)

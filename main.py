@@ -63,10 +63,8 @@ def admin_menu():
 1. Manage manager info
 2. Manage restaurant
 3. Manage courier
-4. Send message
-5. Show statistics
-6. Back to auth menu
-7. Logout
+4. Show statistics
+5. Back to auth menu
 """)
 
     choice = input("\nEnter your choice!").strip()
@@ -79,14 +77,10 @@ def admin_menu():
         manage_couriers_menu()
         admin_menu()
     elif choice == "4":
-        pass
-    elif choice == "5":
         view_reports_menu()
-    elif choice == "6":
+    elif choice == "5":
         print("See you")
-        view_auth_menu()
-    elif choice == "7":
-        print("Logout!")
+        auth.logout()
         view_auth_menu()
     else:
         print("Invalid choice!")
