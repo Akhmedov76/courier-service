@@ -6,14 +6,8 @@ from role.ClientUser.client import UserManager
 from role.Admin.admin import Manager
 from role.Superadmin.superadmin import SuperAdmin
 from role.Delivery.delivery import Delivery
-<< << << < Updated
-upstream
 from role.Manager.manager import Food
-
-== == == =
 from email_sender.send_email_users import EmailSendMessage
->> >> >> > Stashed
-changes
 
 auth = Auth()
 query = Database()
@@ -22,13 +16,8 @@ manager = Manager()
 user_manager = UserManager()
 sup_admin = SuperAdmin()
 delivery = Delivery()
-<< << << < Updated
-upstream
 food = Food()
-== == == =
 email_sender = EmailSendMessage()
->> >> >> > Stashed
-changes
 
 
 def view_auth_menu():
