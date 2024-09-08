@@ -16,6 +16,7 @@ user_manager = UserManager()
 sup_admin = SuperAdmin()
 delivery = Delivery()
 
+
 def view_auth_menu():
     print('''
 1. Register
@@ -58,7 +59,7 @@ def admin_menu():
     print("""
 1. Manage manager info
 2. Manage restaurant
-3. Create courier
+3. Manage courier
 4. Send message
 5. Show statistics
 6. Back to auth menu
@@ -72,7 +73,7 @@ def admin_menu():
     elif choice == "2":
         manage_restaurants_menu()
     elif choice == "3":
-        query.add_courier()
+        manage_couriers_menu()
         admin_menu()
     elif choice == "4":
         pass
@@ -316,7 +317,6 @@ def send_messages_menu():
     else:
         print("Invalid choice!")
         send_messages_menu()
-
 
 
 def view_order_items_menu():
