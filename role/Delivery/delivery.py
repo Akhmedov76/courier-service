@@ -18,6 +18,7 @@ class Delivery:
         threading.Thread(target=execute_query(query, params)).start()
         print("Delivery added successfully!")
 
+
     @log_decorator
     def update_delivery(self):
         delivery_id = input("Enter the delivery ID: ").strip()

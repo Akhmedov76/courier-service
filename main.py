@@ -6,6 +6,7 @@ from utilits.queries import Database
 from role.ClientUser.client import UserManager
 from role.Admin.admin import Manager
 from role.Superadmin.superadmin import SuperAdmin
+from role.Delivery.delivery import Delivery
 
 auth = Auth()
 query = Database()
@@ -13,7 +14,7 @@ tables = CreateTable()
 manager = Manager()
 user_manager = UserManager()
 sup_admin = SuperAdmin()
-
+delivery = Delivery()
 
 def view_auth_menu():
     print('''
@@ -314,57 +315,57 @@ def send_messages_menu():
         send_messages_menu()
 
 
-#
-# def view_order_items_menu():
-#     print("\n--- Manage Order Items ---")
-#     print("""
-#     1. Add Order Item
-#     2. View Order Items
-#     3. Update Order Item
-#     4. Delete Order Item
-#     5. Exit
-#     """)
-#     choice: int = int(input("Choose an action: "))
-#     if choice == 1:
-#         pass
-#     elif choice == 2:
-#         pass
-#     elif choice == 3:
-#         pass
-#     elif choice == 4:
-#         pass
-#     elif choice == 5:
-#         print("Exiting...")
-#         view_auth_menu()
-#     else:
-#         print("Invalid choice!")
-#         view_order_items_menu()
+
+def view_order_items_menu():
+    print("\n--- Manage Order Items ---")
+    print("""
+    1. Add Order Item
+    2. View Order Items
+    3. Update Order Item
+    4. Delete Order Item
+    5. Exit
+    """)
+    choice: int = int(input("Choose an action: "))
+    if choice == 1:
+        pass
+    elif choice == 2:
+        pass
+    elif choice == 3:
+        pass
+    elif choice == 4:
+        pass
+    elif choice == 5:
+        print("Exiting...")
+        view_auth_menu()
+    else:
+        print("Invalid choice!")
+        view_order_items_menu()
 
 
-# def view_delivery_menu():
-#     print("\n--- Manage Deliveries ---")
-#     print("""
-#     1. Add Delivery
-#     2. View Deliveries
-#     3. Update Delivery
-#     4. Delete Delivery
-#     5. Exit
-#     """)
-#     choice: int = int(input("Choose an action: "))
-#     if choice == 1:
-#         pass
-#     elif choice == 2:
-#         pass
-#     elif choice == 3:
-#         pass
-#     elif choice == 4:
-#         pass
-#     elif choice == 5:
-#         print("Exiting...")
-#         view_auth_menu()
-#     else:
-#         print("Invalid choice!")
-#         view_delivery_menu()
+def view_delivery_menu():
+    print("\n--- Manage Deliveries ---")
+    print("""
+    1. Add Delivery
+    2. Update Delivery
+    3. Delete Delivery
+    4. Exit
+    """)
+    choice: int = int(input("Choose an action: "))
+    if choice == 1:
+        delivery.add_delivery()
+        view_delivery_menu()
+    elif choice == 2:
+        delivery.update_delivery()
+        view_delivery_menu()
+    elif choice == 3:
+        delivery.delete_delivery()
+        view_delivery_menu()
+    elif choice == 4:
+        print("Exiting...")
+        view_auth_menu()
+    else:
+        print("Invalid choice!")
+        view_delivery_menu()
 
 
 if __name__ == '__main__':
