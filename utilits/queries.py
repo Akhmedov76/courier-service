@@ -58,7 +58,7 @@ class Database:
         phone_number = input("Enter restaurant's phone number: ").strip()
         address = input("Enter restaurant's address: ").capitalize().strip()
         logo = input("Enter restaurant's logo: ")
-        user_id = input("Enter user ID: ")
+        user_id = input("Enter manager ID: ")
 
         query = '''INSERT INTO restaurants (name, description, phone_number, address, logo, user_id) 
                    VALUES (%s, %s, %s, %s, %s, %s)'''
