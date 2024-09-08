@@ -4,6 +4,7 @@ import threading
 
 from database_config.db_settings import Database, execute_query
 from decorator.decorator import log_decorator
+from email_sender.email import send_mail
 from email_sender.email_checker import check_email
 
 SUPERADMIN_LOGIN = "super"
@@ -29,6 +30,10 @@ class Auth:
         role = input("Enter role (user, manager, admin): ").lower().strip()
         try:
             check_email(email)
+            subjects = "You logged in"
+            message = f"Login: {phone_number}\nPassword: {password}\n"
+            threading.Thread(target=send_mail(email, subjects, message)).start()
+
             query = '''
             SELECT * FROM users WHERE phone_number=%s OR email=%s
             '''
