@@ -6,8 +6,8 @@ from database_config.db_settings import Database, execute_query
 from decorator.decorator import log_decorator
 from email_sender.email_checker import check_email
 
-SUPERADMIN_LOGIN = "Super"
-SUPERADMIN_PASSWORD = "Super"
+SUPERADMIN_LOGIN = "super"
+SUPERADMIN_PASSWORD = "super"
 
 
 class Auth:
