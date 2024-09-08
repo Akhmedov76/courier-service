@@ -1,8 +1,8 @@
 import threading
 
-from Utilits.models import CreateTable
+from utilits.models import CreateTable
 from Auth.auth import Auth
-from Utilits.queries import Database
+from utilits.queries import Database
 from role.ClientUser.client import UserManager
 from role.Admin.admin import Manager
 from .role.Superadmin.superadmin import SuperAdmin
