@@ -1,8 +1,10 @@
 import threading
 from datetime import datetime
 from database_config.db_settings import execute_query
+from decorator.decorator import log_decorator
 
 
+@log_decorator
 def add_order():
     order_date = input("Enter order date (YYYY-MM-DD HH:MM:SS): ")
     total_amount = input("Enter total amount: ")
@@ -17,6 +19,7 @@ def add_order():
     print("Order added successfully!")
 
 
+@log_decorator
 def add_courier():
     name = input("Enter courier's name: ")
     phone_number = input("Enter courier's phone number: ")
@@ -31,6 +34,7 @@ def add_courier():
     print("Courier added successfully!")
 
 
+@log_decorator
 def add_restaurant():
     name = input("Enter restaurant's name: ")
     description = input("Enter restaurant's description: ")
@@ -46,6 +50,7 @@ def add_restaurant():
     print("Restaurant added successfully!")
 
 
+@log_decorator
 def add_branch():
     name = input("Enter branch's name: ")
     address = input("Enter branch's address: ")
@@ -60,6 +65,7 @@ def add_branch():
     print("Branch added successfully!")
 
 
+@log_decorator
 def add_kitchen_menu():
     name = input("Enter menu item name: ")
     description = input("Enter menu item description: ")
@@ -73,6 +79,7 @@ def add_kitchen_menu():
     print("Kitchen menu item added successfully!")
 
 
+@log_decorator
 def add_order_item():
     order_id = input("Enter order ID: ")
     kitchen_id = input("Enter kitchen item ID: ")
@@ -86,6 +93,7 @@ def add_order_item():
     print("Order item added successfully!")
 
 
+@log_decorator
 def add_delivery():
     order_id = input("Enter order ID: ")
     courier_id = input("Enter courier ID: ")
@@ -99,6 +107,7 @@ def add_delivery():
     print("Delivery added successfully!")
 
 
+@log_decorator
 def add_payment():
     order_id = input("Enter order ID: ")
     payment_date = input("Enter payment date (YYYY-MM-DD HH:MM:SS): ")
