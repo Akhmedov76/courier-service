@@ -239,11 +239,14 @@ def manage_couriers_menu():
 
     choice = input("Please select menu: ").strip()
     if choice == "1":
-        pass
+        delivery.add_courier()
+        manage_couriers_menu()
     elif choice == "2":
-        pass
+        delivery.update_courier()
+        manage_couriers_menu()
     elif choice == "3":
-        pass
+        delivery.delete_courier()
+        manage_couriers_menu()
     elif choice == "4":
         print("Goodbye!")
         view_auth_menu()

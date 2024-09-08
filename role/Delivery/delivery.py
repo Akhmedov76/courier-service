@@ -55,7 +55,7 @@ class Delivery:
         print("Courier added successfully!")
 
     @log_decorator
-    def update_courier_table(self):
+    def update_courier(self):
         courier_id = input("Enter the courier ID: ").strip()
         new_name = input("Enter new courier's name: ")
         new_phone_number = input("Enter new courier's phone number: ")
@@ -69,7 +69,7 @@ class Delivery:
         print("Courier updated successfully!")
 
     @log_decorator
-    def delete_courier_table(self):
+    def delete_courier(self):
         courier_id = input("Enter the courier ID: ").strip()
 
         query = "DELETE FROM couriers WHERE courier_id = %s"
