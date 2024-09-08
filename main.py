@@ -33,7 +33,7 @@ def view_auth_menu():
             elif result_login['role'] == 'manager':
                 pass
             elif result_login['role'] == 'user':
-                manage_users_menu()
+                manage_user_menu()
         elif user_input == 3:
             print("Good bye!")
             if Auth.logout:
@@ -60,7 +60,7 @@ def admin_menu():
 
     choice = input("\nEnter your choice!").strip()
     if choice == "1":
-        
+
         admin_menu()
     elif choice == "2":
         manage_restaurants_menu()
@@ -82,7 +82,7 @@ def admin_menu():
         admin_menu()
 
 
-def view_user_menu():
+def manage_user_menu():
     print("\nUser Menu:")
     print("1. View My Profile")
     print("2. View My Orders")
@@ -103,7 +103,7 @@ def view_user_menu():
         view_auth_menu()
     else:
         print("Invalid choice!")
-        view_user_menu()
+        manage_user_menu()
 
 
 def superadmin_menu():
