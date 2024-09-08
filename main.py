@@ -115,11 +115,17 @@ def manage_manager_menu():
         admin_menu()
 
 
+def manager_menu():
+    print("Manager menu")
+    print("1. Make a new food")
+    print("2. View My order")
+
+
 def manage_user_menu():
     print("\nUser Menu:")
-    print("1. View My Profile")
-    print("2. View My Orders")
-    print("3. Make a New Order")
+    print("1. View My profile")
+    print("2. View My orders")
+    print("3. Make a new Order")
     print("4. View Restaurant Menu")
     print("5. Logout")
     choice = input("Please select menu: ").strip()
