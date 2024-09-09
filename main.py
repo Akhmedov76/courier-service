@@ -198,6 +198,24 @@ def superadmin_menu():
         superadmin_menu()
 
 
+<<<<<<< Updated upstream
+=======
+    choice = input("Please select menu: ").strip()
+    if choice == "1":
+        pass
+    elif choice == "2":
+        pass
+    elif choice == "3":
+        pass
+    elif choice == "4":
+        print("Goodbye!")
+        view_auth_menu()
+    else:
+        print("Invalid choice!")
+        manage_orders_menu()
+
+
+>>>>>>> Stashed changes
 def manage_restaurants_menu():
     print("\nManage Restaurants and Branches:")
     print("1. Add Restaurant")
