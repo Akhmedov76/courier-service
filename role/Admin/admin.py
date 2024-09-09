@@ -37,7 +37,7 @@ class Manager:
         except Exception as e:
             print(f"An error occurred while adding manager: {str(e)}")
             return False
-
+    @log_decorator
     def update_manager(self):
         manager_id = input("Enter the manager ID: ").strip()
         new_name = input("Enter new name: ").capitalize().strip()
