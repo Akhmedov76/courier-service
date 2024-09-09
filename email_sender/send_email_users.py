@@ -6,8 +6,6 @@ from email_sender.email import send_mail
 
 class EmailSendMessage:
 
-    
-
     @log_decorator
     def send_email_all_users(self):
 
