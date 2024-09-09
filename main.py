@@ -197,29 +197,7 @@ def superadmin_menu():
         print("Invalid choice!")
         superadmin_menu()
 
-def manage_orders_menu():
-    print("\nManage Orders!")
-    print("1. View All Orders")
-    print("2. Update Order Status")
-    print("3. View Order Details")
-    print("4. Back to Admin Menu")
 
-    choice = input("Please select menu: ").strip()
-    if choice == "1":
-        pass
-    elif choice == "2":
-        pass
-    elif choice == "3":
-        pass
-    elif choice == "4":
-        print("Goodbye!")
-        view_auth_menu()
-    else:
-        print("Invalid choice!")
-        manage_orders_menu()
-
-
->>>>>>> Stashed changes
 def manage_restaurants_menu():
     print("\nManage Restaurants and Branches:")
     print("1. Add Restaurant")
