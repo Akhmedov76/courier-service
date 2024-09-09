@@ -198,10 +198,6 @@ def superadmin_menu():
         superadmin_menu()
 
 
-def main():
-    pass
-
-
 def manage_restaurants_menu():
     print("\nManage Restaurants and Branches:")
     print("1. Add Restaurant")
