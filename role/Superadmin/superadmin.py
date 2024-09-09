@@ -39,7 +39,7 @@ class SuperAdmin:
         except Exception as e:
             print(f"An error occurred while adding admin: {str(e)}")
             return False
-
+    @log_decorator
     def update_admin_table(self):
         admin_id = input("Enter the admin ID: ").strip()
         new_name = input("Enter new name: ").capitalize().strip()
