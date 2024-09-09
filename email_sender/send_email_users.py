@@ -1,20 +1,3 @@
-"""
-    @log_decorator
-    def send_message_users_table(self):
-
-        query = '''
-        CREATE TABLE IF NOT EXISTS messages (
-            id SERIAL PRIMARY KEY,
-            user_id BIGINT NOT NULL,
-            message VARCHAR(255) NOT NULL,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            FOREIGN KEY (user_id) REFERENCES users(id)
-        );
-        '''
-        execute_query(query)
-        return True
-
-"""
 import threading
 
 from database_config.db_settings import execute_query
