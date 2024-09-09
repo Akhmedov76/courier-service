@@ -60,6 +60,7 @@ def view_auth_menu():
 
 def admin_menu():
     print("""
+Welcome to admin menu:\n 
 1. Manage manager
 2. Manage restaurant
 3. Manage courier
