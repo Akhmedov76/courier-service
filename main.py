@@ -118,7 +118,7 @@ def manager_menu():
 1.Add food
 2.Update food 
 3.Delete food 
-4.Exit
+4.Exit to auth menu
 """)
 
     choice = input("Enter your choice: ")
