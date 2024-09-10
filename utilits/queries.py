@@ -82,7 +82,7 @@ class Database:
         threading.Thread(target=execute_query(query, params)).start()
         print("Restaurant updated successfully!")
 
-
+    @log_decorator
     @log_decorator
     def delete_restaurant(self):
         restaurant_id = input("Enter the restaurant ID: ").strip()
